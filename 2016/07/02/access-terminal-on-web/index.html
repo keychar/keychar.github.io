@@ -93,7 +93,7 @@ $ git clone https://github.com/shellinabox/shellinabox.git
 $ cd shellinabox
 
 # Generate configure
-$ autoreco">
+$ autoreconf">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在 Web 界面访问命令行">
 <meta property="og:url" content="http://www.keychar.com/2016/07/02/access-terminal-on-web/index.html">
@@ -107,10 +107,10 @@ $ git clone https://github.com/shellinabox/shellinabox.git
 $ cd shellinabox
 
 # Generate configure
-$ autoreco">
+$ autoreconf">
 <meta property="og:image" content="http://www.keychar.com/images/2016/access-terminal-on-web/run-shellinaboxd.png">
 <meta property="og:image" content="http://www.keychar.com/images/2016/access-terminal-on-web/run-custom-style-shellinaboxd.png">
-<meta property="og:updated_time" content="2016-07-04T15:09:08.000Z">
+<meta property="og:updated_time" content="2016-07-04T15:21:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在 Web 界面访问命令行">
 <meta name="twitter:description" content="&amp;#x4E0B;&amp;#x8F7D;&amp;#x5E76;&amp;#x7F16;&amp;#x8BD1; shellinabox
@@ -122,7 +122,7 @@ $ git clone https://github.com/shellinabox/shellinabox.git
 $ cd shellinabox
 
 # Generate configure
-$ autoreco">
+$ autoreconf">
 <meta name="twitter:image" content="http://www.keychar.com/images/2016/access-terminal-on-web/run-shellinaboxd.png">
 
 
@@ -377,6 +377,8 @@ $ ./configure &amp;&amp; make
 $ ./shellinabxd --version
 ShellInABox version 2.20 (revision e6c25e8)</span><br></pre></td></tr></table></figure>
 </div>
+
+<a id="more"></a>
 </div>
 </div>
 
@@ -415,7 +417,7 @@ $ ./shellinaboxd --service /:user:group:HOME:LOGIN</span><br></pre></td></tr></t
 <div class="outline-text-3" id="text-3-1">
 <div class="org-src-container">
 
-<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$background</span><span class="value">: <span class="hexcolor">#000</span>;</span></span><br><span class="line"><span class="variable">$color</span><span class="value">: <span class="hexcolor">#fff</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">body</span> {</span><br><span class="line">    <span class="attribute">background</span><span class="value">: <span class="variable">$background</span>;</span></span><br><span class="line">    <span class="attribute">color</span><span class="value">: <span class="variable">$color</span>;</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="id">#vt100</span> <span class="class">.bgAnsiDef</span> { <span class="attribute">background-color</span><span class="value">: <span class="variable">$background</span>;</span> }</span><br><span class="line"><span class="id">#vt100</span> <span class="class">.bgAnsiDefR</span></span><br><span class="line">{ <span class="attribute">background-color</span><span class="value">: <span class="variable">$color</span>;</span> }</span><br><span class="line"></span><br><span class="line"><span class="id">#vt100</span> <span class="id">#scrollable</span><span class="class">.inverted</span> <span class="class">.bgAnsiDef</span></span><br><span class="line">{ <span class="attribute">background-color</span><span class="value">: <span class="variable">$color</span>;</span> }</span><br><span class="line"><span class="id">#vt100</span> <span class="id">#scrollable</span><span class="class">.inverted</span> <span class="class">.bgAnsiDefR</span></span><br><span class="line">{ <span class="attribute">background-color</span><span class="value">: <span class="variable">$background</span>;</span> }</span><br><span class="line"></span><br><span class="line"><span class="id">#vt100</span> <span class="class">.ansiDef</span>   { <span class="attribute">color</span><span class="value">:            <span class="variable">$color</span>;</span> }</span><br><span class="line"><span class="id">#vt100</span> <span class="class">.ansiDefR</span>  { <span class="attribute">color</span><span class="value">:            <span class="variable">$background</span>;</span> }</span><br><span class="line"></span><br><span class="line"><span class="id">#vt100</span> <span class="id">#scrollable</span><span class="class">.inverted</span> <span class="class">.ansiDef</span></span><br><span class="line">{ <span class="attribute">color</span><span class="value">:            <span class="variable">$background</span>;</span> }</span><br><span class="line"><span class="id">#vt100</span> <span class="id">#scrollable</span><span class="class">.inverted</span> <span class="class">.ansiDefR</span></span><br><span class="line">{ <span class="attribute">color</span><span class="value">:            <span class="variable">$color</span>;</span> }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="id">#vt100</span> <span class="id">#cursor</span><span class="class">.bright</span> {</span><br><span class="line"><span class="attribute">background-color</span><span class="value">:     whitesmoke;</span></span><br><span class="line"><span class="attribute">color</span><span class="value">:                black;</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$background</span><span class="value">: <span class="hexcolor">#000</span>;</span></span><br><span class="line"><span class="variable">$foreground</span><span class="value">: <span class="hexcolor">#fff</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">body</span> {</span><br><span class="line">    <span class="attribute">background-color</span><span class="value">: <span class="variable">$background</span>;</span></span><br><span class="line">    <span class="attribute">color</span><span class="value">: <span class="variable">$foreground</span>;</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="id">#vt100</span> <span class="class">.ansiDef</span> {</span><br><span class="line">    <span class="attribute">color</span><span class="value">: <span class="variable">$foreground</span>;</span></span><br><span class="line">}</span><br><span class="line"><span class="id">#vt100</span> <span class="class">.ansiDefR</span> {</span><br><span class="line">    <span class="attribute">color</span><span class="value">: <span class="variable">$background</span>;</span></span><br><span class="line">}</span><br><span class="line"><span class="id">#vt100</span> <span class="id">#scrollable</span><span class="class">.inverted</span> <span class="class">.ansiDef</span> {</span><br><span class="line">    <span class="attribute">color</span><span class="value">: <span class="variable">$background</span>;</span></span><br><span class="line">}</span><br><span class="line"><span class="id">#vt100</span> <span class="id">#scrollable</span><span class="class">.inverted</span> <span class="class">.ansiDefR</span> {</span><br><span class="line">    <span class="attribute">color</span><span class="value">: <span class="variable">$foreground</span>;</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="id">#vt100</span> <span class="class">.bgAnsiDef</span> {</span><br><span class="line">    <span class="attribute">background-color</span><span class="value">: <span class="variable">$background</span>;</span></span><br><span class="line">}</span><br><span class="line"><span class="id">#vt100</span> <span class="class">.bgAnsiDefR</span> {</span><br><span class="line">    <span class="attribute">background-color</span><span class="value">: <span class="variable">$foreground</span>;</span></span><br><span class="line">}</span><br><span class="line"><span class="id">#vt100</span> <span class="id">#scrollable</span><span class="class">.inverted</span> <span class="class">.bgAnsiDef</span> {</span><br><span class="line">    <span class="attribute">background-color</span><span class="value">: <span class="variable">$foreground</span>;</span></span><br><span class="line">}</span><br><span class="line"><span class="id">#vt100</span> <span class="id">#scrollable</span><span class="class">.inverted</span> <span class="class">.bgAnsiDefR</span> {</span><br><span class="line">    <span class="attribute">background-color</span><span class="value">: <span class="variable">$background</span>;</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="id">#vt100</span> <span class="id">#cursor</span><span class="class">.bright</span> {</span><br><span class="line">    <span class="attribute">background-color</span><span class="value">: whitesmoke;</span></span><br><span class="line">    <span class="attribute">color</span><span class="value">: black;</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
