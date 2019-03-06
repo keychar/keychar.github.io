@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="引言   在 c 程序开发时，经常会碰到数据转换的情况。 本文表述了对于浮点数如何存储的理解。     &amp;lt;!&amp;#x2013;more&amp;#x2013;&amp;gt;        浮点数在内存存储示例   123456789101112131415161718#include     &amp;lt;stdio.h&amp;gt;#include     &amp;lt;stdlib.h&amp;gt;/** * @bri">
+  <meta name="description" content="引言   在 c 程序开发时，经常会碰到数据转换的情况。 本文表述了对于浮点数如何存储的理解。">
 <meta name="keywords" content="c,float">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解浮点数存储">
 <meta property="og:url" content="http://www.keychar.com/2016/07/05/undersdanding-float-storage/index.html">
 <meta property="og:site_name" content="Keychar">
-<meta property="og:description" content="引言   在 c 程序开发时，经常会碰到数据转换的情况。 本文表述了对于浮点数如何存储的理解。     &amp;lt;!&amp;#x2013;more&amp;#x2013;&amp;gt;        浮点数在内存存储示例   123456789101112131415161718#include     &amp;lt;stdio.h&amp;gt;#include     &amp;lt;stdlib.h&amp;gt;/** * @bri">
+<meta property="og:description" content="引言   在 c 程序开发时，经常会碰到数据转换的情况。 本文表述了对于浮点数如何存储的理解。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-20T12:39:51.000Z">
+<meta property="og:updated_time" content="2019-03-06T16:47:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解浮点数存储">
-<meta name="twitter:description" content="引言   在 c 程序开发时，经常会碰到数据转换的情况。 本文表述了对于浮点数如何存储的理解。     &amp;lt;!&amp;#x2013;more&amp;#x2013;&amp;gt;        浮点数在内存存储示例   123456789101112131415161718#include     &amp;lt;stdio.h&amp;gt;#include     &amp;lt;stdlib.h&amp;gt;/** * @bri">
+<meta name="twitter:description" content="引言   在 c 程序开发时，经常会碰到数据转换的情况。 本文表述了对于浮点数如何存储的理解。">
 
 
 
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-02-20 20:39:51" itemprop="dateModified" datetime="2018-02-20T20:39:51+08:00">2018-02-20</time>
+                <time title="修改时间：2019-03-07 00:47:52" itemprop="dateModified" datetime="2019-03-07T00:47:52+08:00">2019-03-07</time>
               
             
           </span>
@@ -475,26 +475,21 @@
         
 
 
-<div id="outline-container-orga891ca5" class="outline-2">
-<h2 id="orga891ca5">引言</h2>
-<div class="outline-text-2" id="text-orga891ca5">
+<div id="outline-container-orgd60246b" class="outline-2">
+<h2 id="orgd60246b">引言</h2>
+<div class="outline-text-2" id="text-orgd60246b">
 <p>
 在 c 程序开发时，经常会碰到数据转换的情况。
 本文表述了对于浮点数如何存储的理解。
 </p>
 
-<div class="HTML">
-<p>
-&lt;!&#x2013;more&#x2013;&gt;
-</p>
-
-</div>
+<a id="more"></a>
 </div>
 </div>
 
-<div id="outline-container-orgefcc7af" class="outline-2">
-<h2 id="orgefcc7af">浮点数在内存存储示例</h2>
-<div class="outline-text-2" id="text-orgefcc7af">
+<div id="outline-container-orge0e427a" class="outline-2">
+<h2 id="orge0e427a">浮点数在内存存储示例</h2>
+<div class="outline-text-2" id="text-orge0e427a">
 <div class="org-src-container">
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>     <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>     <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * @brief The entry of this program</span><br><span class="line"> *</span><br><span class="line"> * @param argc counts of argument</span><br><span class="line"> * @param argv argument variables stored in</span><br><span class="line"> *</span><br><span class="line"> * @return EXIT_SUCCESS</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span><br><span class="line"></span>{</span><br><span class="line">    <span class="keyword">float</span> f = <span class="number">7.5</span>;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> i = *(<span class="keyword">unsigned</span> <span class="keyword">int</span> *)&amp;f;</span><br><span class="line">    <span class="built_in">printf</span> (<span class="string">"i:0x%x\n"</span>, i);</span><br><span class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">}          <span class="comment">//end of function main</span></span><br></pre></td></tr></table></figure>
 </div>
@@ -502,31 +497,31 @@
 </div>
 
 
-<div id="outline-container-orgce6ddbd" class="outline-2">
-<h2 id="orgce6ddbd">输出结果</h2>
-<div class="outline-text-2" id="text-orgce6ddbd">
+<div id="outline-container-org42e84bd" class="outline-2">
+<h2 id="org42e84bd">输出结果</h2>
+<div class="outline-text-2" id="text-org42e84bd">
 <div class="org-src-container">
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">i:0x40F00000</span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7148959" class="outline-2">
-<h2 id="org7148959">解释</h2>
-<div class="outline-text-2" id="text-org7148959">
+<div id="outline-container-org9dcc6a1" class="outline-2">
+<h2 id="org9dcc6a1">解释</h2>
+<div class="outline-text-2" id="text-org9dcc6a1">
 </div>
-<div id="outline-container-orgab73ac2" class="outline-3">
-<h3 id="orgab73ac2">浮点数格式</h3>
-<div class="outline-text-3" id="text-orgab73ac2">
+<div id="outline-container-orgb3ad256" class="outline-3">
+<h3 id="orgb3ad256">浮点数格式</h3>
+<div class="outline-text-3" id="text-orgb3ad256">
 <div class="org-src-container">
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">|                                                               |&#10;|&#60;------------------------4Bytes/32Bits------------------------&#62;|&#10;|                                                               |&#10;|1Bit(Sign:+/-)    23Bits(Digit)                                |&#10;+-+---------------+---------------------------------------------+&#10;|x|x x x x x x x x|x x x x x x x x x x x x x x x x x x x x x x x|&#10;+-+---------------++-+-+----------------------------------------+&#10;   8Bits(Exp)      | | +-(2^-3)&#10;                   | +-(2^-2)&#10;                   +-(2^-1)</span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1b88d50" class="outline-3">
-<h3 id="org1b88d50">浮点数7.5如何存储</h3>
-<div class="outline-text-3" id="text-org1b88d50">
+<div id="outline-container-orgb1a925c" class="outline-3">
+<h3 id="orgb1a925c">浮点数7.5如何存储</h3>
+<div class="outline-text-3" id="text-orgb1a925c">
 <p>
 +7.5 = 3.75 * (2<sup>1</sup>) = 1.875 * (2<sup>2</sup>) <br>
 Sign = 0 <br>
@@ -791,7 +786,7 @@ Digit = 111 0000 0000 0000 0000 0000(Binray) <br>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#orga891ca5"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgefcc7af"><span class="nav-number">2.</span> <span class="nav-text">浮点数在内存存储示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgce6ddbd"><span class="nav-number">3.</span> <span class="nav-text">输出结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org7148959"><span class="nav-number">4.</span> <span class="nav-text">解释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgab73ac2"><span class="nav-number">4.1.</span> <span class="nav-text">浮点数格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org1b88d50"><span class="nav-number">4.2.</span> <span class="nav-text">浮点数7.5如何存储</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#orgd60246b"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orge0e427a"><span class="nav-number">2.</span> <span class="nav-text">浮点数在内存存储示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org42e84bd"><span class="nav-number">3.</span> <span class="nav-text">输出结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org9dcc6a1"><span class="nav-number">4.</span> <span class="nav-text">解释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgb3ad256"><span class="nav-number">4.1.</span> <span class="nav-text">浮点数格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgb1a925c"><span class="nav-number">4.2.</span> <span class="nav-text">浮点数7.5如何存储</span></a></li></ol></li></ol></div>
             
 
           </div>
