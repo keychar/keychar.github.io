@@ -279,7 +279,7 @@
               
                 
                 <a class="post-title-link" href="/2019/03/06/create-private-docker-registry/" itemprop="url">
-                  创建私有Docker Registry
+                  如何创建私有Docker Registry
                 </a>
               
             
@@ -340,11 +340,7 @@
 
       
         
-          
-            
-
-
-<div id="outline-container-sec-1" class="outline-2">
+          <div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1">Registry &#x670D;&#x52A1;&#x5668;&#x521B;&#x5EFA;&#x548C;&#x8BBE;&#x7F6E;</h2>
 <div class="outline-text-2" id="text-1">
 </div><div id="outline-container-sec-1-1" class="outline-3">
@@ -352,7 +348,7 @@
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ mkdir -p /opt/dorker/registry</span><br><span class="line">$ <span class="built_in">cd</span> /opt/dorker/registry</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mkdir -p /opt/dorker/registry</span><br><span class="line"><span class="built_in">cd</span> /opt/dorker/registry</span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
@@ -370,116 +366,11 @@
 
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mkdir -p certs</span><br><span class="line">openssl req -newkey rsa:<span class="number">2048</span> -nodes -sha256 -keyout certs/domain.key -x509 -days <span class="number">365</span> -out certs/domain.crt</span><br><span class="line"><span class="comment"># Common Name (e.g. server FQDN or YOUR name) []:mydockerhub.com</span></span><br></pre></td></tr></table></figure>
 </div>
-</div>
-</div>
-
-<div id="outline-container-sec-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2">&#x5728; Docker &#x5BA2;&#x6237;&#x7AEF;&#x8BBE;&#x7F6E; hosts</h4>
-<div class="outline-text-4" id="text-1-2-2">
-<div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ifconfig eth0|grep inet</span><br><span class="line"><span class="comment"># inet addr:10.121.1.198  Bcast:10.121.1.255  Mask:255.255.255.0</span></span><br><span class="line"></span><br><span class="line">grep mydockerhub /etc/hosts</span><br><span class="line"><span class="comment">#10.121.1.198      mydockerhub.com</span></span><br></pre></td></tr></table></figure>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3">&#x521B;&#x5EFA;&#x5BC6;&#x7801;</h4>
-<div class="outline-text-4" id="text-1-2-3">
-<p>
-&#x8BBE;&#x7F6E;Registry&#x8D26;&#x53F7;&#x4E3A; testuser, &#x5BC6;&#x7801;&#x4E3A; testpassword, &#x6839;&#x636E;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x8BBE;&#x7F6E;
-</p>
-<div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mkdir -p auth</span><br><span class="line">docker run --entrypoint htpasswd registry:<span class="number">2</span> -Bbn testuser testpassword &gt; auth/htpasswd</span><br></pre></td></tr></table></figure>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4">&#x66F4;&#x65B0;&#x79D8;&#x94A5;</h4>
-<div class="outline-text-4" id="text-1-2-4">
-<div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker/certs.d/mydockerhub.com:<span class="number">5000</span></span><br><span class="line">sudo cp certs/domain.crt /etc/docker/certs.d/mydockerhub.com:<span class="number">5000</span>/ca.crt</span><br><span class="line">sudo service docker restart</span><br></pre></td></tr></table></figure>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3">&#x542F;&#x52A8; Registry &#x670D;&#x52A1;</h3>
-<div class="outline-text-3" id="text-1-3">
-<div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker run <span class="operator">-d</span> \</span><br><span class="line">  -p <span class="number">5000</span>:<span class="number">5000</span> \</span><br><span class="line">  --restart=always \</span><br><span class="line">  --name registry \</span><br><span class="line">  -v /opt/docker/registry:/var/lib/registry \</span><br><span class="line">  -v <span class="string">&quot;<span class="variable">$(pwd)</span>&quot;</span>/auth:/auth \</span><br><span class="line">  <span class="operator">-e</span> <span class="string">&quot;REGISTRY_AUTH=htpasswd&quot;</span> \</span><br><span class="line">  <span class="operator">-e</span> <span class="string">&quot;REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm&quot;</span> \</span><br><span class="line">  <span class="operator">-e</span> REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \</span><br><span class="line">  -v <span class="string">&quot;<span class="variable">$(pwd)</span>&quot;</span>/certs:/certs \</span><br><span class="line">  <span class="operator">-e</span> REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \</span><br><span class="line">  <span class="operator">-e</span> REGISTRY_HTTP_TLS_KEY=/certs/domain.key \</span><br><span class="line">  registry:<span class="number">2</span></span><br></pre></td></tr></table></figure>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">&#x6D4B;&#x8BD5; Registry</h2>
-<div class="outline-text-2" id="text-2">
-</div><div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1">&#x767B;&#x5F55;</h3>
-<div class="outline-text-3" id="text-2-1">
-<div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker login mydockerhub.com:<span class="number">5000</span></span><br><span class="line"><span class="comment">#Username: testuser</span></span><br><span class="line"><span class="comment">#Password:</span></span><br><span class="line"><span class="comment">#WARNING! Your password will be stored unencrypted in /root/.docker/config.json.</span></span><br><span class="line"><span class="comment">#Configure a credential helper to remove this warning. See</span></span><br><span class="line"><span class="comment">#https://docs.docker.com/engine/reference/commandline/login/#credentials-store</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Login Succeeded</span></span><br></pre></td></tr></table></figure>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2">&#x63A8;&#x9001;&#x955C;&#x50CF;&#x5230;&#x79C1;&#x6709; Registry</h3>
-<div class="outline-text-3" id="text-2-2">
-<div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker pull busybox</span><br><span class="line">docker tag busybox:latest mydockerhub.com:<span class="number">5000</span>/tonybai/busybox:latest</span><br><span class="line">docker push mydockerhub.com:<span class="number">5000</span>/tonybai/busybox</span><br><span class="line"><span class="comment">#The push refers to repository [mydockerhub.com:5000/tonybai/busybox]</span></span><br><span class="line"><span class="comment">#683f499823be: Pushed</span></span><br><span class="line"><span class="comment">#latest: digest: sha256:bbb143159af9eabdf45511fd5aab4fd2475d4c0e7fd4a5e154b98e838488e510 size: 527</span></span><br><span class="line"></span><br><span class="line">docker image remove busybox</span><br><span class="line">docker image remove mydockerhub.com:<span class="number">5000</span>/tonybai/busybox:latest</span><br><span class="line">docker pull mydockerhub.com:<span class="number">5000</span>/tonybai/busybox:latest</span><br></pre></td></tr></table></figure>
-</div>
-</div>
-</div>
-
-
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3">&#x542F;&#x52A8; Registry Browser, &#x53EF;&#x4EE5;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x6D4F;&#x89C8; Registry &#x4E2D;&#x955C;&#x50CF;&#x5217;&#x8868;</h3>
-<div class="outline-text-3" id="text-2-3">
-<p>
-&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x547D;&#x4EE4;&#x542F;&#x52A8;&#x540E;&#xFF0C;&#x5728;Web&#x8BBF;&#x95EE; <a href="http://10.121.1.198:8080" target="_blank" rel="external">http://10.121.1.198:8080</a>
-</p>
-<div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">cat hosts</span><br><span class="line"><span class="comment">#127.0.0.1 localhost</span></span><br><span class="line"><span class="comment">#10.121.1.198    mydockerhub.com</span></span><br><span class="line"></span><br><span class="line">docker run <span class="operator">-d</span> \</span><br><span class="line">  --name registry-browser \</span><br><span class="line">  -p <span class="number">8080</span>:<span class="number">8080</span> \</span><br><span class="line">  <span class="operator">-e</span> DOCKER_REGISTRY_URL=https://mydockerhub.com:<span class="number">5000</span> \</span><br><span class="line">  <span class="operator">-e</span> BASIC_AUTH_USER=testuser \</span><br><span class="line">  <span class="operator">-e</span> BASIC_AUTH_PASSWORD=testpassword \</span><br><span class="line">  <span class="operator">-e</span> NO_SSL_VERIFICATION=<span class="literal">true</span> \</span><br><span class="line">  -v <span class="variable">$PWD</span>/hosts:/etc/hosts \</span><br><span class="line">  klausmeyer/docker-registry-browser</span><br></pre></td></tr></table></figure>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">&#x505C;&#x6B62;&#x548C;&#x5220;&#x9664; Registry</h2>
-<div class="outline-text-2" id="text-3">
-<p>
-&#x5982;&#x679C;&#x60F3;&#x91CD;&#x65B0;&#x521B;&#x5EFA; Registry&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x505C;&#x6B62;&#x548C;&#x5220;&#x9664;
-</p>
-<div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker container stop registry &amp;&amp; docker container rm -v registry</span><br></pre></td></tr></table></figure>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">&#x53C2;&#x8003;</h2>
-<div class="outline-text-2" id="text-4">
-<p>
-<a href="https://docs.docker.com/registry/deploying/" target="_blank" rel="external">https://docs.docker.com/registry/deploying/</a>
-<a href="https://tonybai.com/2016/02/26/deploy-a-private-docker-registry/" target="_blank" rel="external">&#x90E8;&#x7F72;&#x79C1;&#x6709;Docker Registry</a>
-</p>
-</div>
-</div>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/03/06/create-private-docker-registry/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
