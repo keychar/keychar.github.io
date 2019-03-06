@@ -15,11 +15,11 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
 
 
 
@@ -46,9 +46,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
 
-<link rel="stylesheet" href="/css/main.css?v=7.0.1"/>
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
@@ -96,44 +96,25 @@
 
 
 
-  <meta name="description" content="Registry &amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x521B;&amp;#x5EFA;&amp;#x548C;&amp;#x8BBE;&amp;#x7F6E;
-
-
-&amp;#x521B;&amp;#x5EFA;&amp;#x672C;&amp;#x5730;&amp;#x4ED3;&amp;#x5E93;&amp;#x76EE;&amp;#x5F55;
-
-
-
-mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
+  <meta name="description" content="Registry &amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x521B;&amp;#x5EFA;&amp;#x548C;&amp;#x8BBE;&amp;#x7F6E;   &amp;#x521B;&amp;#x5EFA;&amp;#x672C;&amp;#x5730;&amp;#x4ED3;&amp;#x5E93;&amp;#x76EE;&amp;#x5F55;    mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
+<meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何创建私有Docker Registry">
 <meta property="og:url" content="http://www.keychar.com/2019/03/06/create-private-docker-registry/index.html">
 <meta property="og:site_name" content="Keychar">
-<meta property="og:description" content="Registry &amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x521B;&amp;#x5EFA;&amp;#x548C;&amp;#x8BBE;&amp;#x7F6E;
-
-
-&amp;#x521B;&amp;#x5EFA;&amp;#x672C;&amp;#x5730;&amp;#x4ED3;&amp;#x5E93;&amp;#x76EE;&amp;#x5F55;
-
-
-
-mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
+<meta property="og:description" content="Registry &amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x521B;&amp;#x5EFA;&amp;#x548C;&amp;#x8BBE;&amp;#x7F6E;   &amp;#x521B;&amp;#x5EFA;&amp;#x672C;&amp;#x5730;&amp;#x4ED3;&amp;#x5E93;&amp;#x76EE;&amp;#x5F55;    mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-03-06T06:17:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何创建私有Docker Registry">
-<meta name="twitter:description" content="Registry &amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x521B;&amp;#x5EFA;&amp;#x548C;&amp;#x8BBE;&amp;#x7F6E;
-
-
-&amp;#x521B;&amp;#x5EFA;&amp;#x672C;&amp;#x5730;&amp;#x4ED3;&amp;#x5E93;&amp;#x76EE;&amp;#x5F55;
-
-
-
-mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
+<meta name="twitter:description" content="Registry &amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x521B;&amp;#x5EFA;&amp;#x548C;&amp;#x8BBE;&amp;#x7F6E;   &amp;#x521B;&amp;#x5EFA;&amp;#x672C;&amp;#x5730;&amp;#x4ED3;&amp;#x5E93;&amp;#x76EE;&amp;#x5F55;    mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.keychar.com/2019/03/06/create-private-docker-registry/"/>
+  <link rel="canonical" href="http://www.keychar.com/2019/03/06/create-private-docker-registry/">
 
 
 
@@ -184,7 +165,7 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -194,7 +175,7 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
     
@@ -239,7 +220,7 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
         
@@ -256,7 +237,7 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
 
   </li>
         
@@ -273,7 +254,7 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
         
@@ -290,7 +271,7 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
 
@@ -301,7 +282,7 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
             <a href="javascript:;" class="st-search-show-outputs">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
         </li>
       
     </ul>
@@ -313,7 +294,7 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
     <div class="site-search">
       
   <form class="site-search-form">
-  <input type="text" id="st-search-input" class="st-search-input st-default-search-input"/>
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input">
 </form>
 
 <script>
@@ -364,21 +345,21 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.keychar.com/2019/03/06/create-private-docker-registry/"/>
+    <link itemprop="mainEntityOfPage" href="http://www.keychar.com/2019/03/06/create-private-docker-registry/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Evans"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Evans">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keychar"/>
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keychar">
     </span>
 
     
@@ -434,7 +415,7 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/howto/" itemprop="url" rel="index"><span itemprop="name">howto</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/howto/" itemprop="url" rel="index"><span itemprop="name">howto</span></a></span>
 
                 
                 
@@ -576,7 +557,7 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
 <h3 id="sec-2-3">&#x542F;&#x52A8; Registry Browser, &#x53EF;&#x4EE5;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x6D4F;&#x89C8; Registry &#x4E2D;&#x955C;&#x50CF;&#x5217;&#x8868;</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
-&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x547D;&#x4EE4;&#x542F;&#x52A8;&#x540E;&#xFF0C;&#x5728;Web&#x8BBF;&#x95EE; <a href="http://10.121.1.198:8080" target="_blank" rel="external">http://10.121.1.198:8080</a>
+&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x547D;&#x4EE4;&#x542F;&#x52A8;&#x540E;&#xFF0C;&#x5728;Web&#x8BBF;&#x95EE; <a href="http://10.121.1.198:8080" target="_blank" rel="noopener">http://10.121.1.198:8080</a>
 </p>
 <div class="org-src-container">
 
@@ -603,9 +584,9 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
 <h2 id="sec-4">&#x53C2;&#x8003;</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
-<li><a href="https://docs.docker.com/registry/deploying/" target="_blank" rel="external">https://docs.docker.com/registry/deploying/</a>
+<li><a href="https://docs.docker.com/registry/deploying/" target="_blank" rel="noopener">https://docs.docker.com/registry/deploying/</a>
 </li>
-<li><a href="https://tonybai.com/2016/02/26/deploy-a-private-docker-registry/" target="_blank" rel="external">&#x90E8;&#x7F72;&#x79C1;&#x6709;Docker Registry</a>
+<li><a href="https://tonybai.com/2016/02/26/deploy-a-private-docker-registry/" target="_blank" rel="noopener">&#x90E8;&#x7F72;&#x79C1;&#x6709;Docker Registry</a>
 </li>
 </ul>
 </div>
@@ -636,14 +617,14 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="http://keychar.com/images/site/wechat.png" alt="Evans 微信支付"/>
+        <img id="wechat_qr" src="http://keychar.com/images/site/wechat.png" alt="Evans 微信支付">
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="http://keychar.com/images/site/alipay.png" alt="Evans 支付宝"/>
+        <img id="alipay_qr" src="http://keychar.com/images/site/alipay.png" alt="Evans 支付宝">
         <p>支付宝</p>
       </div>
     
@@ -739,7 +720,7 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Evans</p>
               <div class="site-description motion-element" itemprop="description"></div>
@@ -793,8 +774,6 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
                     
                   
                     
-                    
-                      
                     
                       
                     

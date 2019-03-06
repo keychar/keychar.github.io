@@ -15,11 +15,11 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
 
 
 
@@ -46,9 +46,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
 
-<link rel="stylesheet" href="/css/main.css?v=7.0.1"/>
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
@@ -96,35 +96,25 @@
 
 
 
-  <meta name="description" content="&amp;#x5F15;&amp;#x8A00;
-
-
-&amp;#x5728; c &amp;#x7A0B;&amp;#x5E8F;&amp;#x5F00;&amp;#x53D1;&amp;#x65F6;&amp;#xFF0C;&amp;#x7ECF;&amp;#x5E38;&amp;#x4F1A;&amp;#x78B0;&amp;#x5230;&amp;#x6570;&amp;#x636E;&amp;#x8F6C;&amp;#x6362;&amp;#x7684;&amp;#x60C5;&amp;#x51B5;&amp;#x3002;
-&amp;#x672C;&amp;#x6587;">
+  <meta name="description" content="&amp;#x5F15;&amp;#x8A00;   &amp;#x5728; c &amp;#x7A0B;&amp;#x5E8F;&amp;#x5F00;&amp;#x53D1;&amp;#x65F6;&amp;#xFF0C;&amp;#x7ECF;&amp;#x5E38;&amp;#x4F1A;&amp;#x78B0;&amp;#x5230;&amp;#x6570;&amp;#x636E;&amp;#x8F6C;&amp;#x6362;&amp;#x7684;&amp;#x60C5;&amp;#x51B5;&amp;#x3002; &amp;#x672C;&amp;#x6587;">
+<meta name="keywords" content="c,float">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解浮点数存储">
 <meta property="og:url" content="http://www.keychar.com/2016/07/05/undersdanding-float-storage/index.html">
 <meta property="og:site_name" content="Keychar">
-<meta property="og:description" content="&amp;#x5F15;&amp;#x8A00;
-
-
-&amp;#x5728; c &amp;#x7A0B;&amp;#x5E8F;&amp;#x5F00;&amp;#x53D1;&amp;#x65F6;&amp;#xFF0C;&amp;#x7ECF;&amp;#x5E38;&amp;#x4F1A;&amp;#x78B0;&amp;#x5230;&amp;#x6570;&amp;#x636E;&amp;#x8F6C;&amp;#x6362;&amp;#x7684;&amp;#x60C5;&amp;#x51B5;&amp;#x3002;
-&amp;#x672C;&amp;#x6587;">
+<meta property="og:description" content="&amp;#x5F15;&amp;#x8A00;   &amp;#x5728; c &amp;#x7A0B;&amp;#x5E8F;&amp;#x5F00;&amp;#x53D1;&amp;#x65F6;&amp;#xFF0C;&amp;#x7ECF;&amp;#x5E38;&amp;#x4F1A;&amp;#x78B0;&amp;#x5230;&amp;#x6570;&amp;#x636E;&amp;#x8F6C;&amp;#x6362;&amp;#x7684;&amp;#x60C5;&amp;#x51B5;&amp;#x3002; &amp;#x672C;&amp;#x6587;">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-02-20T12:39:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解浮点数存储">
-<meta name="twitter:description" content="&amp;#x5F15;&amp;#x8A00;
-
-
-&amp;#x5728; c &amp;#x7A0B;&amp;#x5E8F;&amp;#x5F00;&amp;#x53D1;&amp;#x65F6;&amp;#xFF0C;&amp;#x7ECF;&amp;#x5E38;&amp;#x4F1A;&amp;#x78B0;&amp;#x5230;&amp;#x6570;&amp;#x636E;&amp;#x8F6C;&amp;#x6362;&amp;#x7684;&amp;#x60C5;&amp;#x51B5;&amp;#x3002;
-&amp;#x672C;&amp;#x6587;">
+<meta name="twitter:description" content="&amp;#x5F15;&amp;#x8A00;   &amp;#x5728; c &amp;#x7A0B;&amp;#x5E8F;&amp;#x5F00;&amp;#x53D1;&amp;#x65F6;&amp;#xFF0C;&amp;#x7ECF;&amp;#x5E38;&amp;#x4F1A;&amp;#x78B0;&amp;#x5230;&amp;#x6570;&amp;#x636E;&amp;#x8F6C;&amp;#x6362;&amp;#x7684;&amp;#x60C5;&amp;#x51B5;&amp;#x3002; &amp;#x672C;&amp;#x6587;">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.keychar.com/2016/07/05/undersdanding-float-storage/"/>
+  <link rel="canonical" href="http://www.keychar.com/2016/07/05/undersdanding-float-storage/">
 
 
 
@@ -175,7 +165,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -185,7 +175,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
     
@@ -230,7 +220,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
         
@@ -247,7 +237,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
 
   </li>
         
@@ -264,7 +254,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
         
@@ -281,7 +271,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
 
@@ -292,7 +282,7 @@
             <a href="javascript:;" class="st-search-show-outputs">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
         </li>
       
     </ul>
@@ -304,7 +294,7 @@
     <div class="site-search">
       
   <form class="site-search-form">
-  <input type="text" id="st-search-input" class="st-search-input st-default-search-input"/>
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input">
 </form>
 
 <script>
@@ -355,21 +345,21 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.keychar.com/2016/07/05/undersdanding-float-storage/"/>
+    <link itemprop="mainEntityOfPage" href="http://www.keychar.com/2016/07/05/undersdanding-float-storage/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Evans"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Evans">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keychar"/>
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keychar">
     </span>
 
     
@@ -437,7 +427,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">programming</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">programming</span></a></span>
 
                 
                 
@@ -589,14 +579,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="http://keychar.com/images/site/wechat.png" alt="Evans 微信支付"/>
+        <img id="wechat_qr" src="http://keychar.com/images/site/wechat.png" alt="Evans 微信支付">
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="http://keychar.com/images/site/alipay.png" alt="Evans 支付宝"/>
+        <img id="alipay_qr" src="http://keychar.com/images/site/alipay.png" alt="Evans 支付宝">
         <p>支付宝</p>
       </div>
     
@@ -698,7 +688,7 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Evans</p>
               <div class="site-description motion-element" itemprop="description"></div>
@@ -752,8 +742,6 @@
                     
                   
                     
-                    
-                      
                     
                       
                     
