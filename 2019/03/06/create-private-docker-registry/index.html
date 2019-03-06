@@ -104,7 +104,7 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
 
 
 mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
-<meta property="og:updated_time" content="2019-03-06T03:01:21.000Z">
+<meta property="og:updated_time" content="2019-03-06T03:05:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何创建私有Docker Registry">
 <meta name="twitter:description" content="Registry &amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x521B;&amp;#x5EFA;&amp;#x548C;&amp;#x8BBE;&amp;#x7F6E;
@@ -374,6 +374,8 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
 
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mkdir -p /opt/dorker/registry</span><br><span class="line"><span class="built_in">cd</span> /opt/dorker/registry</span><br></pre></td></tr></table></figure>
 </div>
+
+<a id="more"></a>
 </div>
 </div>
 
@@ -384,14 +386,12 @@ mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
 <h4 id="sec-1-2-1">&#x751F;&#x6210;&#x8BC1;&#x4E66;</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
-&#x5728; Command Name &#x586B;&#x5165; mydockerhub.com, &#x6839;&#x636E;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x8BBE;&#x7F6E;, &#x5176;&#x4F59;&#x5B57;&#x6BB5;&#x53EF;&#x6309;&#x56DE;&#x8F66;&#x8DF3;&#x8FC7;&#xFF0C;&#x4E0D;&#x8BBE;&#x7F6E;
+&#x5728; Common Name &#x586B;&#x5165; mydockerhub.com, &#x6839;&#x636E;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x8BBE;&#x7F6E;, &#x5176;&#x4F59;&#x5B57;&#x6BB5;&#x53EF;&#x6309;&#x56DE;&#x8F66;&#x8DF3;&#x8FC7;&#xFF0C;&#x4E0D;&#x8BBE;&#x7F6E;
 </p>
 <div class="org-src-container">
 
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mkdir -p certs</span><br><span class="line">openssl req -newkey rsa:<span class="number">2048</span> -nodes -sha256 -keyout certs/domain.key -x509 -days <span class="number">365</span> -out certs/domain.crt</span><br><span class="line"><span class="comment"># Common Name (e.g. server FQDN or YOUR name) []:mydockerhub.com</span></span><br></pre></td></tr></table></figure>
 </div>
-
-<a id="more"></a>
 </div>
 </div>
 

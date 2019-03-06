@@ -350,22 +350,6 @@
 
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mkdir -p /opt/dorker/registry</span><br><span class="line"><span class="built_in">cd</span> /opt/dorker/registry</span><br></pre></td></tr></table></figure>
 </div>
-</div>
-</div>
-
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2">&#x521B;&#x5EFA;&#x767B;&#x5F55;&#x8D26;&#x53F7;&#x548C;&#x5BC6;&#x7801;</h3>
-<div class="outline-text-3" id="text-1-2">
-</div><div id="outline-container-sec-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1">&#x751F;&#x6210;&#x8BC1;&#x4E66;</h4>
-<div class="outline-text-4" id="text-1-2-1">
-<p>
-&#x5728; Command Name &#x586B;&#x5165; mydockerhub.com, &#x6839;&#x636E;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x8BBE;&#x7F6E;, &#x5176;&#x4F59;&#x5B57;&#x6BB5;&#x53EF;&#x6309;&#x56DE;&#x8F66;&#x8DF3;&#x8FC7;&#xFF0C;&#x4E0D;&#x8BBE;&#x7F6E;
-</p>
-<div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mkdir -p certs</span><br><span class="line">openssl req -newkey rsa:<span class="number">2048</span> -nodes -sha256 -keyout certs/domain.key -x509 -days <span class="number">365</span> -out certs/domain.crt</span><br><span class="line"><span class="comment"># Common Name (e.g. server FQDN or YOUR name) []:mydockerhub.com</span></span><br></pre></td></tr></table></figure>
-</div>
           <div class="post-more-link text-center">
             <a class="btn" href="/2019/03/06/create-private-docker-registry/#more" rel="contents">
               阅读全文 &raquo;
