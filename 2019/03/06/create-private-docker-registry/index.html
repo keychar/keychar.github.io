@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Registry &amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x521B;&amp;#x5EFA;&amp;#x548C;&amp;#x8BBE;&amp;#x7F6E;   &amp;#x521B;&amp;#x5EFA;&amp;#x672C;&amp;#x5730;&amp;#x4ED3;&amp;#x5E93;&amp;#x76EE;&amp;#x5F55;    mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
+  <meta name="description" content="Registry 服务器创建和设置    创建本地仓库目录   12mkdir -p /opt/dorker/registrycd /opt/dorker/registry     &amp;lt;!&amp;#x2013;more&amp;#x2013;&amp;gt;        创建登录账号和密码    生成证书   在 Common Name 填入 mydockerhub.com, 根据实际情况设置, 其余字段">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何创建私有Docker Registry">
 <meta property="og:url" content="http://www.keychar.com/2019/03/06/create-private-docker-registry/index.html">
 <meta property="og:site_name" content="Keychar">
-<meta property="og:description" content="Registry &amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x521B;&amp;#x5EFA;&amp;#x548C;&amp;#x8BBE;&amp;#x7F6E;   &amp;#x521B;&amp;#x5EFA;&amp;#x672C;&amp;#x5730;&amp;#x4ED3;&amp;#x5E93;&amp;#x76EE;&amp;#x5F55;    mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
+<meta property="og:description" content="Registry 服务器创建和设置    创建本地仓库目录   12mkdir -p /opt/dorker/registrycd /opt/dorker/registry     &amp;lt;!&amp;#x2013;more&amp;#x2013;&amp;gt;        创建登录账号和密码    生成证书   在 Common Name 填入 mydockerhub.com, 根据实际情况设置, 其余字段">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-03-06T06:17:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何创建私有Docker Registry">
-<meta name="twitter:description" content="Registry &amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x521B;&amp;#x5EFA;&amp;#x548C;&amp;#x8BBE;&amp;#x7F6E;   &amp;#x521B;&amp;#x5EFA;&amp;#x672C;&amp;#x5730;&amp;#x4ED3;&amp;#x5E93;&amp;#x76EE;&amp;#x5F55;    mkdir -p /opt/dorker/registrycd /opt/dorker/registry">
+<meta name="twitter:description" content="Registry 服务器创建和设置    创建本地仓库目录   12mkdir -p /opt/dorker/registrycd /opt/dorker/registry     &amp;lt;!&amp;#x2013;more&amp;#x2013;&amp;gt;        创建登录账号和密码    生成证书   在 Common Name 填入 mydockerhub.com, 根据实际情况设置, 其余字段">
 
 
 
@@ -219,6 +219,8 @@
     
 
     
+      
+    
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
@@ -236,8 +238,10 @@
     
 
     
+      
+    
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">9</span></a>
 
   </li>
         
@@ -253,8 +257,10 @@
     
 
     
+      
+    
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">4</span></a>
 
   </li>
         
@@ -270,8 +276,10 @@
     
 
     
+      
+    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">4</span></a>
 
   </li>
 
@@ -453,141 +461,137 @@
         
 
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">Registry &#x670D;&#x52A1;&#x5668;&#x521B;&#x5EFA;&#x548C;&#x8BBE;&#x7F6E;</h2>
-<div class="outline-text-2" id="text-1">
-</div><div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1">&#x521B;&#x5EFA;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x76EE;&#x5F55;</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orge0ba880" class="outline-2">
+<h2 id="orge0ba880">Registry 服务器创建和设置</h2>
+<div class="outline-text-2" id="text-orge0ba880">
+</div>
+<div id="outline-container-orgf669a34" class="outline-3">
+<h3 id="orgf669a34">创建本地仓库目录</h3>
+<div class="outline-text-3" id="text-orgf669a34">
 <div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mkdir -p /opt/dorker/registry</span><br><span class="line"><span class="built_in">cd</span> /opt/dorker/registry</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /opt/dorker/registry</span><br><span class="line"><span class="built_in">cd</span> /opt/dorker/registry</span><br></pre></td></tr></table></figure>
 </div>
 
-<a id="more"></a>
-</div>
-</div>
-
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2">&#x521B;&#x5EFA;&#x767B;&#x5F55;&#x8D26;&#x53F7;&#x548C;&#x5BC6;&#x7801;</h3>
-<div class="outline-text-3" id="text-1-2">
-</div><div id="outline-container-sec-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1">&#x751F;&#x6210;&#x8BC1;&#x4E66;</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div class="HTML">
 <p>
-&#x5728; Common Name &#x586B;&#x5165; mydockerhub.com, &#x6839;&#x636E;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x8BBE;&#x7F6E;, &#x5176;&#x4F59;&#x5B57;&#x6BB5;&#x53EF;&#x6309;&#x56DE;&#x8F66;&#x8DF3;&#x8FC7;&#xFF0C;&#x4E0D;&#x8BBE;&#x7F6E;
+&lt;!&#x2013;more&#x2013;&gt;
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0adc888" class="outline-3">
+<h3 id="org0adc888">创建登录账号和密码</h3>
+<div class="outline-text-3" id="text-org0adc888">
+</div>
+<div id="outline-container-org4c31876" class="outline-4">
+<h4 id="org4c31876">生成证书</h4>
+<div class="outline-text-4" id="text-org4c31876">
+<p>
+在 Common Name 填入 mydockerhub.com, 根据实际情况设置, 其余字段可按回车跳过，不设置
 </p>
 <div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mkdir -p certs</span><br><span class="line">openssl req -newkey rsa:<span class="number">2048</span> -nodes -sha256 -keyout certs/domain.key -x509 -days <span class="number">365</span> -out certs/domain.crt</span><br><span class="line"><span class="comment"># Common Name (e.g. server FQDN or YOUR name) []:mydockerhub.com</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p certs</span><br><span class="line">openssl req -newkey rsa:<span class="number">2048</span> -nodes -sha256 -keyout certs/domain.key -x509 -days <span class="number">365</span> -out certs/domain.crt</span><br><span class="line"><span class="comment"># Common Name (e.g. server FQDN or YOUR name) []:mydockerhub.com</span></span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2">&#x5728; Docker &#x5BA2;&#x6237;&#x7AEF;&#x8BBE;&#x7F6E; hosts</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-orgc44fc8c" class="outline-4">
+<h4 id="orgc44fc8c">在 Docker 客户端设置 hosts</h4>
+<div class="outline-text-4" id="text-orgc44fc8c">
 <div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ifconfig eth0|grep inet</span><br><span class="line"><span class="comment"># inet addr:10.121.1.198  Bcast:10.121.1.255  Mask:255.255.255.0</span></span><br><span class="line"></span><br><span class="line">grep mydockerhub /etc/hosts</span><br><span class="line"><span class="comment">#10.121.1.198      mydockerhub.com</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eth0|grep inet</span><br><span class="line"><span class="comment"># inet addr:10.121.1.198  Bcast:10.121.1.255  Mask:255.255.255.0</span></span><br><span class="line"></span><br><span class="line">grep mydockerhub /etc/hosts</span><br><span class="line"><span class="comment">#10.121.1.198   mydockerhub.com</span></span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3">&#x521B;&#x5EFA;&#x5BC6;&#x7801;</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-org068da83" class="outline-4">
+<h4 id="org068da83">创建密码</h4>
+<div class="outline-text-4" id="text-org068da83">
 <p>
-&#x8BBE;&#x7F6E;Registry&#x8D26;&#x53F7;&#x4E3A; testuser, &#x5BC6;&#x7801;&#x4E3A; testpassword, &#x6839;&#x636E;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x8BBE;&#x7F6E;
+设置Registry账号为 testuser, 密码为 testpassword, 根据实际情况设置
 </p>
 <div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mkdir -p auth</span><br><span class="line">docker run --entrypoint htpasswd registry:<span class="number">2</span> -Bbn testuser testpassword &gt; auth/htpasswd</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p auth</span><br><span class="line">docker run --entrypoint htpasswd registry:<span class="number">2</span> -Bbn testuser testpassword &gt; auth/htpasswd</span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4">&#x66F4;&#x65B0;&#x79D8;&#x94A5;</h4>
-<div class="outline-text-4" id="text-1-2-4">
+<div id="outline-container-orgc29806c" class="outline-4">
+<h4 id="orgc29806c">更新秘钥</h4>
+<div class="outline-text-4" id="text-orgc29806c">
 <div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker/certs.d/mydockerhub.com:<span class="number">5000</span></span><br><span class="line">sudo cp certs/domain.crt /etc/docker/certs.d/mydockerhub.com:<span class="number">5000</span>/ca.crt</span><br><span class="line">sudo service docker restart</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker/certs.d/mydockerhub.com:<span class="number">5000</span></span><br><span class="line">sudo cp certs/domain.crt /etc/docker/certs.d/mydockerhub.com:<span class="number">5000</span>/ca.crt</span><br><span class="line">sudo service docker restart</span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3">&#x542F;&#x52A8; Registry &#x670D;&#x52A1;</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-orgf96d83a" class="outline-3">
+<h3 id="orgf96d83a">启动 Registry 服务</h3>
+<div class="outline-text-3" id="text-orgf96d83a">
 <div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker run <span class="operator">-d</span> \</span><br><span class="line">  -p <span class="number">5000</span>:<span class="number">5000</span> \</span><br><span class="line">  --restart=always \</span><br><span class="line">  --name registry \</span><br><span class="line">  -v /opt/docker/registry:/var/lib/registry \</span><br><span class="line">  -v <span class="string">&quot;<span class="variable">$(pwd)</span>&quot;</span>/auth:/auth \</span><br><span class="line">  <span class="operator">-e</span> <span class="string">&quot;REGISTRY_AUTH=htpasswd&quot;</span> \</span><br><span class="line">  <span class="operator">-e</span> <span class="string">&quot;REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm&quot;</span> \</span><br><span class="line">  <span class="operator">-e</span> REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \</span><br><span class="line">  -v <span class="string">&quot;<span class="variable">$(pwd)</span>&quot;</span>/certs:/certs \</span><br><span class="line">  <span class="operator">-e</span> REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \</span><br><span class="line">  <span class="operator">-e</span> REGISTRY_HTTP_TLS_KEY=/certs/domain.key \</span><br><span class="line">  registry:<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">docker run <span class="operator">-d</span> \</span><br><span class="line">  -p <span class="number">5000</span>:<span class="number">5000</span> \</span><br><span class="line">  --restart=always \</span><br><span class="line">  --name registry \</span><br><span class="line">  -v /opt/docker/registry:/var/lib/registry \</span><br><span class="line">  -v <span class="string">"<span class="variable">$(pwd)</span>"</span>/auth:/auth \</span><br><span class="line">  <span class="operator">-e</span> <span class="string">"REGISTRY_AUTH=htpasswd"</span> \</span><br><span class="line">  <span class="operator">-e</span> <span class="string">"REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm"</span> \</span><br><span class="line">  <span class="operator">-e</span> REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \</span><br><span class="line">  -v <span class="string">"<span class="variable">$(pwd)</span>"</span>/certs:/certs \</span><br><span class="line">  <span class="operator">-e</span> REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \</span><br><span class="line">  <span class="operator">-e</span> REGISTRY_HTTP_TLS_KEY=/certs/domain.key \</span><br><span class="line">  registry:<span class="number">2</span></span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">&#x6D4B;&#x8BD5; Registry</h2>
-<div class="outline-text-2" id="text-2">
-</div><div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1">&#x767B;&#x5F55;</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-org348f3c3" class="outline-2">
+<h2 id="org348f3c3">测试 Registry</h2>
+<div class="outline-text-2" id="text-org348f3c3">
+</div>
+<div id="outline-container-org3fb2d5f" class="outline-3">
+<h3 id="org3fb2d5f">登录</h3>
+<div class="outline-text-3" id="text-org3fb2d5f">
 <div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker login mydockerhub.com:<span class="number">5000</span></span><br><span class="line"><span class="comment">#Username: testuser</span></span><br><span class="line"><span class="comment">#Password:</span></span><br><span class="line"><span class="comment">#WARNING! Your password will be stored unencrypted in /root/.docker/config.json.</span></span><br><span class="line"><span class="comment">#Configure a credential helper to remove this warning. See</span></span><br><span class="line"><span class="comment">#https://docs.docker.com/engine/reference/commandline/login/#credentials-store</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Login Succeeded</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker login mydockerhub.com:<span class="number">5000</span></span><br><span class="line"><span class="comment">#Username: testuser</span></span><br><span class="line"><span class="comment">#Password:</span></span><br><span class="line"><span class="comment">#WARNING! Your password will be stored unencrypted in /root/.docker/config.json.</span></span><br><span class="line"><span class="comment">#Configure a credential helper to remove this warning. See</span></span><br><span class="line"><span class="comment">#https://docs.docker.com/engine/reference/commandline/login/#credentials-store</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Login Succeeded</span></span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2">&#x63A8;&#x9001;&#x955C;&#x50CF;&#x5230;&#x79C1;&#x6709; Registry</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-org44ffc46" class="outline-3">
+<h3 id="org44ffc46">推送镜像到私有 Registry</h3>
+<div class="outline-text-3" id="text-org44ffc46">
 <div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker pull busybox</span><br><span class="line">docker tag busybox:latest mydockerhub.com:<span class="number">5000</span>/tonybai/busybox:latest</span><br><span class="line">docker push mydockerhub.com:<span class="number">5000</span>/tonybai/busybox</span><br><span class="line"><span class="comment">#The push refers to repository [mydockerhub.com:5000/tonybai/busybox]</span></span><br><span class="line"><span class="comment">#683f499823be: Pushed</span></span><br><span class="line"><span class="comment">#latest: digest: sha256:bbb143159af9eabdf45511fd5aab4fd2475d4c0e7fd4a5e154b98e838488e510 size: 527</span></span><br><span class="line"></span><br><span class="line">docker image remove busybox</span><br><span class="line">docker image remove mydockerhub.com:<span class="number">5000</span>/tonybai/busybox:latest</span><br><span class="line">docker pull mydockerhub.com:<span class="number">5000</span>/tonybai/busybox:latest</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">docker pull busybox</span><br><span class="line">docker tag busybox:latest mydockerhub.com:<span class="number">5000</span>/tonybai/busybox:latest</span><br><span class="line">docker push mydockerhub.com:<span class="number">5000</span>/tonybai/busybox</span><br><span class="line"><span class="comment">#The push refers to repository [mydockerhub.com:5000/tonybai/busybox]</span></span><br><span class="line"><span class="comment">#683f499823be: Pushed</span></span><br><span class="line"><span class="comment">#latest: digest: sha256:bbb143159af9eabdf45511fd5aab4fd2475d4c0e7fd4a5e154b98e838488e510 size: 527</span></span><br><span class="line"></span><br><span class="line">docker image remove busybox</span><br><span class="line">docker image remove mydockerhub.com:<span class="number">5000</span>/tonybai/busybox:latest</span><br><span class="line">docker pull mydockerhub.com:<span class="number">5000</span>/tonybai/busybox:latest</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3">&#x542F;&#x52A8; Registry Browser, &#x53EF;&#x4EE5;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x6D4F;&#x89C8; Registry &#x4E2D;&#x955C;&#x50CF;&#x5217;&#x8868;</h3>
-<div class="outline-text-3" id="text-2-3">
+<div id="outline-container-org64685f1" class="outline-3">
+<h3 id="org64685f1">启动 Registry Browser, 可以在浏览器浏览 Registry 中镜像列表</h3>
+<div class="outline-text-3" id="text-org64685f1">
 <p>
-&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x547D;&#x4EE4;&#x542F;&#x52A8;&#x540E;&#xFF0C;&#x5728;Web&#x8BBF;&#x95EE; <a href="http://10.121.1.198:8080" target="_blank" rel="noopener">http://10.121.1.198:8080</a>
+使用如下命令启动后，在Web访问 <a href="http://10.121.1.198:8080" target="_blank" rel="noopener">http://10.121.1.198:8080</a>
 </p>
 <div class="org-src-container">
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">cat hosts</span><br><span class="line"><span class="comment">#127.0.0.1 localhost</span></span><br><span class="line"><span class="comment">#10.121.1.198    mydockerhub.com</span></span><br><span class="line"></span><br><span class="line">docker run <span class="operator">-d</span> \</span><br><span class="line">  --name registry-browser \</span><br><span class="line">  -p <span class="number">8080</span>:<span class="number">8080</span> \</span><br><span class="line">  <span class="operator">-e</span> DOCKER_REGISTRY_URL=https://mydockerhub.com:<span class="number">5000</span> \</span><br><span class="line">  <span class="operator">-e</span> BASIC_AUTH_USER=testuser \</span><br><span class="line">  <span class="operator">-e</span> BASIC_AUTH_PASSWORD=testpassword \</span><br><span class="line">  <span class="operator">-e</span> NO_SSL_VERIFICATION=<span class="literal">true</span> \</span><br><span class="line">  -v <span class="variable">$PWD</span>/hosts:/etc/hosts \</span><br><span class="line">  klausmeyer/docker-registry-browser</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cat hosts</span><br><span class="line"><span class="comment">#127.0.0.1      localhost</span></span><br><span class="line"><span class="comment">#10.121.1.198    mydockerhub.com</span></span><br><span class="line"></span><br><span class="line">docker run <span class="operator">-d</span> \</span><br><span class="line">  --name registry-browser \</span><br><span class="line">  -p <span class="number">8080</span>:<span class="number">8080</span> \</span><br><span class="line">  <span class="operator">-e</span> DOCKER_REGISTRY_URL=https://mydockerhub.com:<span class="number">5000</span> \</span><br><span class="line">  <span class="operator">-e</span> BASIC_AUTH_USER=testuser \</span><br><span class="line">  <span class="operator">-e</span> BASIC_AUTH_PASSWORD=testpassword \</span><br><span class="line">  <span class="operator">-e</span> NO_SSL_VERIFICATION=<span class="literal">true</span> \</span><br><span class="line">  -v <span class="variable">$PWD</span>/hosts:/etc/hosts \</span><br><span class="line">  klausmeyer/docker-registry-browser</span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">&#x505C;&#x6B62;&#x548C;&#x5220;&#x9664; Registry</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org45d9958" class="outline-2">
+<h2 id="org45d9958">停止和删除 Registry</h2>
+<div class="outline-text-2" id="text-org45d9958">
 <p>
-&#x5982;&#x679C;&#x60F3;&#x91CD;&#x65B0;&#x521B;&#x5EFA; Registry&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x505C;&#x6B62;&#x548C;&#x5220;&#x9664;
+如果想重新创建 Registry，可以通过下面的命令停止和删除
 </p>
 <div class="org-src-container">
-
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker container stop registry &amp;&amp; docker container rm -v registry</span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">&#x53C2;&#x8003;</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org2c70f2b" class="outline-2">
+<h2 id="org2c70f2b">参考</h2>
+<div class="outline-text-2" id="text-org2c70f2b">
 <ul class="org-ul">
-<li><a href="https://docs.docker.com/registry/deploying/" target="_blank" rel="noopener">https://docs.docker.com/registry/deploying/</a>
-</li>
-<li><a href="https://tonybai.com/2016/02/26/deploy-a-private-docker-registry/" target="_blank" rel="noopener">&#x90E8;&#x7F72;&#x79C1;&#x6709;Docker Registry</a>
-</li>
+<li><a href="https://docs.docker.com/registry/deploying/" target="_blank" rel="noopener">https://docs.docker.com/registry/deploying/</a></li>
+<li><a href="https://tonybai.com/2016/02/26/deploy-a-private-docker-registry/" target="_blank" rel="noopener">部署私有Docker Registry</a></li>
 </ul>
 </div>
 </div>
@@ -829,7 +833,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sec-1"><span class="nav-number">1.</span> <span class="nav-text">Registry 服务器创建和设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sec-1-1"><span class="nav-number">1.1.</span> <span class="nav-text">创建本地仓库目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sec-1-2"><span class="nav-number">1.2.</span> <span class="nav-text">创建登录账号和密码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sec-1-2-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">生成证书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sec-1-2-2"><span class="nav-number">1.2.2.</span> <span class="nav-text">在 Docker 客户端设置 hosts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sec-1-2-3"><span class="nav-number">1.2.3.</span> <span class="nav-text">创建密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sec-1-2-4"><span class="nav-number">1.2.4.</span> <span class="nav-text">更新秘钥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sec-1-3"><span class="nav-number">1.3.</span> <span class="nav-text">启动 Registry 服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sec-2"><span class="nav-number">2.</span> <span class="nav-text">测试 Registry</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sec-2-1"><span class="nav-number">2.1.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sec-2-2"><span class="nav-number">2.2.</span> <span class="nav-text">推送镜像到私有 Registry</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sec-2-3"><span class="nav-number">2.3.</span> <span class="nav-text">启动 Registry Browser, 可以在浏览器浏览 Registry 中镜像列表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sec-3"><span class="nav-number">3.</span> <span class="nav-text">停止和删除 Registry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sec-4"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#orge0ba880"><span class="nav-number">1.</span> <span class="nav-text">Registry 服务器创建和设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgf669a34"><span class="nav-number">1.1.</span> <span class="nav-text">创建本地仓库目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org0adc888"><span class="nav-number">1.2.</span> <span class="nav-text">创建登录账号和密码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org4c31876"><span class="nav-number">1.2.1.</span> <span class="nav-text">生成证书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#orgc44fc8c"><span class="nav-number">1.2.2.</span> <span class="nav-text">在 Docker 客户端设置 hosts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org068da83"><span class="nav-number">1.2.3.</span> <span class="nav-text">创建密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#orgc29806c"><span class="nav-number">1.2.4.</span> <span class="nav-text">更新秘钥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgf96d83a"><span class="nav-number">1.3.</span> <span class="nav-text">启动 Registry 服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org348f3c3"><span class="nav-number">2.</span> <span class="nav-text">测试 Registry</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org3fb2d5f"><span class="nav-number">2.1.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org44ffc46"><span class="nav-number">2.2.</span> <span class="nav-text">推送镜像到私有 Registry</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org64685f1"><span class="nav-number">2.3.</span> <span class="nav-text">启动 Registry Browser, 可以在浏览器浏览 Registry 中镜像列表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org45d9958"><span class="nav-number">3.</span> <span class="nav-text">停止和删除 Registry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org2c70f2b"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
