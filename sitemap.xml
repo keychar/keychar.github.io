@@ -1,0 +1,67 @@
+<?xml-stylesheet type="text/xsl" href="https://keychar.com/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://keychar.com/categories/</loc>
+    <lastmod>2019-10-20T22:29:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://keychar.com/tags/cli/</loc>
+    <lastmod>2019-10-20T22:29:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://keychar.com/</loc>
+    <lastmod>2019-10-20T22:29:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://keychar.com/post/</loc>
+    <lastmod>2019-10-20T22:29:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://keychar.com/tags/</loc>
+    <lastmod>2019-10-20T22:29:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://keychar.com/tags/terminal/</loc>
+    <lastmod>2019-10-20T22:29:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://keychar.com/categories/terminal/</loc>
+    <lastmod>2019-10-20T22:29:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://keychar.com/tags/web/</loc>
+    <lastmod>2019-10-20T22:29:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://keychar.com/post/access-terminal-on-web/</loc>
+    <lastmod>2019-10-20T22:29:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+</urlset>
