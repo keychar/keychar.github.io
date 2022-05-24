@@ -1,0 +1,1319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>在 Web 界面访问命令行</title>
+    <url>/2019/10/20/access-terminal-on-web/</url>
+    <content><![CDATA[
+
+<p>
+Shellinabox 是一个基于 web 的终端模拟器，通过它在 Web 浏览器登录并访问 Linux 命令行。
+</p>
+
+<span id="more"></span>
+
+<div id="outline-container-org4496ad1" class="outline-2">
+<h2 id="org4496ad1">下载并编译 shellinabox</h2>
+<div class="outline-text-2" id="text-org4496ad1">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"># Clone shellinabox from github&#10;$ git clone https://github.com/shellinabox/shellinabox.git&#10;$ cd shellinabox&#10;&#10;# Generate configure&#10;$ autoreconf -i&#10;&#10;# Compile&#10;$ ./configure &#38;&#38; make&#10;&#10;# Check&#10;$ ./shellinabxd --version&#10;ShellInABox version 2.20 (revision e6c25e8)</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2bb7e26" class="outline-2">
+<h2 id="org2bb7e26">运行并测试</h2>
+<div class="outline-text-2" id="text-org2bb7e26">
+</div>
+<div id="outline-container-org9e84373" class="outline-3">
+<h3 id="org9e84373">运行 shellinaboxd</h3>
+<div class="outline-text-3" id="text-org9e84373">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">$ ./make-chained-cert.sh &#62; certificate.pem&#10;$ ./shellinaboxd --service /:user:group:HOME:LOGIN</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8c4e45f" class="outline-3">
+<h3 id="org8c4e45f">在浏览器打开</h3>
+<div class="outline-text-3" id="text-org8c4e45f">
+
+<div id="orgf43fc8c" class="figure">
+<p><img src="../access-terminal-on-web/run-shellinaboxd.png" alt="run-shellinaboxd.png" title="Run shellinaboxd">
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org83aeb06" class="outline-2">
+<h2 id="org83aeb06">添加自定义 style</h2>
+<div class="outline-text-2" id="text-org83aeb06">
+</div>
+<div id="outline-container-org917bc2f" class="outline-3">
+<h3 id="org917bc2f">创建 custom.scss 样式</h3>
+<div class="outline-text-3" id="text-org917bc2f">
+<div class="org-src-container">
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$background</span><span class="value">: <span class="hexcolor">#000</span>;</span></span><br><span class="line"><span class="variable">$foreground</span><span class="value">: <span class="hexcolor">#fff</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">body</span> {</span><br><span class="line">    <span class="attribute">background-color</span><span class="value">: <span class="variable">$background</span>;</span></span><br><span class="line">    <span class="attribute">color</span><span class="value">: <span class="variable">$foreground</span>;</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="id">#vt100</span> <span class="class">.ansiDef</span> {</span><br><span class="line">    <span class="attribute">color</span><span class="value">: <span class="variable">$foreground</span>;</span></span><br><span class="line">}</span><br><span class="line"><span class="id">#vt100</span> <span class="class">.ansiDefR</span> {</span><br><span class="line">    <span class="attribute">color</span><span class="value">: <span class="variable">$background</span>;</span></span><br><span class="line">}</span><br><span class="line"><span class="id">#vt100</span> <span class="id">#scrollable</span><span class="class">.inverted</span> <span class="class">.ansiDef</span> {</span><br><span class="line">    <span class="attribute">color</span><span class="value">: <span class="variable">$background</span>;</span></span><br><span class="line">}</span><br><span class="line"><span class="id">#vt100</span> <span class="id">#scrollable</span><span class="class">.inverted</span> <span class="class">.ansiDefR</span> {</span><br><span class="line">    <span class="attribute">color</span><span class="value">: <span class="variable">$foreground</span>;</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="id">#vt100</span> <span class="class">.bgAnsiDef</span> {</span><br><span class="line">    <span class="attribute">background-color</span><span class="value">: <span class="variable">$background</span>;</span></span><br><span class="line">}</span><br><span class="line"><span class="id">#vt100</span> <span class="class">.bgAnsiDefR</span> {</span><br><span class="line">    <span class="attribute">background-color</span><span class="value">: <span class="variable">$foreground</span>;</span></span><br><span class="line">}</span><br><span class="line"><span class="id">#vt100</span> <span class="id">#scrollable</span><span class="class">.inverted</span> <span class="class">.bgAnsiDef</span> {</span><br><span class="line">    <span class="attribute">background-color</span><span class="value">: <span class="variable">$foreground</span>;</span></span><br><span class="line">}</span><br><span class="line"><span class="id">#vt100</span> <span class="id">#scrollable</span><span class="class">.inverted</span> <span class="class">.bgAnsiDefR</span> {</span><br><span class="line">    <span class="attribute">background-color</span><span class="value">: <span class="variable">$background</span>;</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="id">#vt100</span> <span class="id">#cursor</span><span class="class">.bright</span> {</span><br><span class="line">    <span class="attribute">background-color</span><span class="value">: whitesmoke;</span></span><br><span class="line">    <span class="attribute">color</span><span class="value">: black;</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0da07ec" class="outline-3">
+<h3 id="org0da07ec">编译 sass 文件</h3>
+<div class="outline-text-3" id="text-org0da07ec">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">$ sudo gem install sass&#10;$ sass custom.scss &#62; custom.css</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org811cdbe" class="outline-2">
+<h2 id="org811cdbe">运行并测试自定义样式</h2>
+<div class="outline-text-2" id="text-org811cdbe">
+</div>
+<div id="outline-container-org15e53e2" class="outline-3">
+<h3 id="org15e53e2">运行 shellinaboxd</h3>
+<div class="outline-text-3" id="text-org15e53e2">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">$ ./shellinaboxd --service /:user:group:HOME:LOGIN --css=custom.css</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org54bd50d" class="outline-3">
+<h3 id="org54bd50d">在浏览器打开</h3>
+<div class="outline-text-3" id="text-org54bd50d">
+
+<div id="orgceb33de" class="figure">
+<p><img src="../access-terminal-on-web/run-custom-style-shellinaboxd.png" alt="run-custom-style-shellinaboxd.png" title="Run Custom Style shellinaboxd">
+</p>
+</div>
+</div>
+</div>
+</div>
+]]></content>
+      <categories>
+        <category>terminal</category>
+      </categories>
+      <tags>
+        <tag>cli</tag>
+        <tag>web</tag>
+        <tag>terminal</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何创建私有Docker Registry</title>
+    <url>/2019/03/06/create-private-docker-registry/</url>
+    <content><![CDATA[
+
+
+<div id="outline-container-org60f0a27" class="outline-2">
+<h2 id="org60f0a27">Registry 服务器创建和设置</h2>
+<div class="outline-text-2" id="text-org60f0a27">
+</div>
+<div id="outline-container-org716798a" class="outline-3">
+<h3 id="org716798a">创建本地仓库目录</h3>
+<div class="outline-text-3" id="text-org716798a">
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mkdir -p /opt/dorker/registry</span><br><span class="line"><span class="built_in">cd</span> /opt/dorker/registry</span><br></pre></td></tr></table></figure>
+</div>
+
+<span id="more"></span>
+</div>
+</div>
+
+<div id="outline-container-org5104597" class="outline-3">
+<h3 id="org5104597">创建登录账号和密码</h3>
+<div class="outline-text-3" id="text-org5104597">
+</div>
+<div id="outline-container-orga908fad" class="outline-4">
+<h4 id="orga908fad">生成证书</h4>
+<div class="outline-text-4" id="text-orga908fad">
+<p>
+在 Common Name 提示时填入 mydockerhub.com, 根据实际情况设置, 其余字段可按回车跳过，不设置
+</p>
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mkdir -p certs</span><br><span class="line">openssl req -newkey rsa:<span class="number">2048</span> -nodes -sha256 -keyout certs/domain.key -x509 -days <span class="number">365</span> -out certs/domain.crt</span><br><span class="line"><span class="comment"># Common Name (e.g. server FQDN or YOUR name) []:mydockerhub.com</span></span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3c7ace7" class="outline-4">
+<h4 id="org3c7ace7">在 Docker 客户端设置 hosts</h4>
+<div class="outline-text-4" id="text-org3c7ace7">
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ifconfig eth0|grep inet</span><br><span class="line"><span class="comment"># inet addr:10.121.1.198  Bcast:10.121.1.255  Mask:255.255.255.0</span></span><br><span class="line"></span><br><span class="line">grep mydockerhub /etc/hosts</span><br><span class="line"><span class="comment">#10.121.1.198   mydockerhub.com</span></span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb45f3f1" class="outline-4">
+<h4 id="orgb45f3f1">创建密码</h4>
+<div class="outline-text-4" id="text-orgb45f3f1">
+<p>
+设置Registry账号为 testuser, 密码为 testpassword, 根据实际情况设置
+</p>
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mkdir -p auth</span><br><span class="line">docker run --entrypoint htpasswd registry:<span class="number">2</span> -Bbn testuser testpassword &gt; auth/htpasswd</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf1e2630" class="outline-4">
+<h4 id="orgf1e2630">更新秘钥</h4>
+<div class="outline-text-4" id="text-orgf1e2630">
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker/certs.d/mydockerhub.com:<span class="number">5000</span></span><br><span class="line">sudo cp certs/domain.crt /etc/docker/certs.d/mydockerhub.com:<span class="number">5000</span>/ca.crt</span><br><span class="line">sudo service docker restart</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org12bde3a" class="outline-3">
+<h3 id="org12bde3a">启动 Registry 服务</h3>
+<div class="outline-text-3" id="text-org12bde3a">
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker run <span class="operator">-d</span> \</span><br><span class="line">  -p <span class="number">5000</span>:<span class="number">5000</span> \</span><br><span class="line">  --restart=always \</span><br><span class="line">  --name registry \</span><br><span class="line">  -v /opt/docker/registry:/var/lib/registry \</span><br><span class="line">  -v <span class="string">"<span class="variable">$(pwd)</span>"</span>/auth:/auth \</span><br><span class="line">  <span class="operator">-e</span> <span class="string">"REGISTRY_AUTH=htpasswd"</span> \</span><br><span class="line">  <span class="operator">-e</span> <span class="string">"REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm"</span> \</span><br><span class="line">  <span class="operator">-e</span> REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \</span><br><span class="line">  -v <span class="string">"<span class="variable">$(pwd)</span>"</span>/certs:/certs \</span><br><span class="line">  <span class="operator">-e</span> REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \</span><br><span class="line">  <span class="operator">-e</span> REGISTRY_HTTP_TLS_KEY=/certs/domain.key \</span><br><span class="line">  registry:<span class="number">2</span></span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga373397" class="outline-2">
+<h2 id="orga373397">测试 Registry</h2>
+<div class="outline-text-2" id="text-orga373397">
+</div>
+<div id="outline-container-orgf01a7a5" class="outline-3">
+<h3 id="orgf01a7a5">登录</h3>
+<div class="outline-text-3" id="text-orgf01a7a5">
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker login mydockerhub.com:<span class="number">5000</span></span><br><span class="line"><span class="comment">#Username: testuser</span></span><br><span class="line"><span class="comment">#Password:</span></span><br><span class="line"><span class="comment">#WARNING! Your password will be stored unencrypted in /root/.docker/config.json.</span></span><br><span class="line"><span class="comment">#Configure a credential helper to remove this warning. See</span></span><br><span class="line"><span class="comment">#https://docs.docker.com/engine/reference/commandline/login/#credentials-store</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Login Succeeded</span></span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5e4639c" class="outline-3">
+<h3 id="org5e4639c">推送镜像到私有 Registry</h3>
+<div class="outline-text-3" id="text-org5e4639c">
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker pull busybox</span><br><span class="line">docker tag busybox:latest mydockerhub.com:<span class="number">5000</span>/tonybai/busybox:latest</span><br><span class="line">docker push mydockerhub.com:<span class="number">5000</span>/tonybai/busybox</span><br><span class="line"><span class="comment">#The push refers to repository [mydockerhub.com:5000/tonybai/busybox]</span></span><br><span class="line"><span class="comment">#683f499823be: Pushed</span></span><br><span class="line"><span class="comment">#latest: digest: sha256:bbb143159af9eabdf45511fd5aab4fd2475d4c0e7fd4a5e154b98e838488e510 size: 527</span></span><br><span class="line"></span><br><span class="line">docker image remove busybox</span><br><span class="line">docker image remove mydockerhub.com:<span class="number">5000</span>/tonybai/busybox:latest</span><br><span class="line">docker pull mydockerhub.com:<span class="number">5000</span>/tonybai/busybox:latest</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org5b8fdef" class="outline-3">
+<h3 id="org5b8fdef">启动 Registry Browser, 可以在浏览器浏览 Registry 中镜像列表</h3>
+<div class="outline-text-3" id="text-org5b8fdef">
+<p>
+使用如下命令启动后，在Web访问 <a href="http://10.121.1.198:8080">http://10.121.1.198:8080</a>
+</p>
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">cat hosts</span><br><span class="line"><span class="comment">#127.0.0.1      localhost</span></span><br><span class="line"><span class="comment">#10.121.1.198    mydockerhub.com</span></span><br><span class="line"></span><br><span class="line">docker run <span class="operator">-d</span> \</span><br><span class="line">  --name registry-browser \</span><br><span class="line">  -p <span class="number">8080</span>:<span class="number">8080</span> \</span><br><span class="line">  <span class="operator">-e</span> DOCKER_REGISTRY_URL=https://mydockerhub.com:<span class="number">5000</span> \</span><br><span class="line">  <span class="operator">-e</span> BASIC_AUTH_USER=testuser \</span><br><span class="line">  <span class="operator">-e</span> BASIC_AUTH_PASSWORD=testpassword \</span><br><span class="line">  <span class="operator">-e</span> NO_SSL_VERIFICATION=<span class="literal">true</span> \</span><br><span class="line">  -v <span class="variable">$PWD</span>/hosts:/etc/hosts \</span><br><span class="line">  klausmeyer/docker-registry-browser</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb3fdcc8" class="outline-2">
+<h2 id="orgb3fdcc8">停止和删除 Registry</h2>
+<div class="outline-text-2" id="text-orgb3fdcc8">
+<p>
+如果想重新创建 Registry，可以通过下面的命令停止和删除
+</p>
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker container stop registry &amp;&amp; docker container rm -v registry</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org447cc50" class="outline-2">
+<h2 id="org447cc50">参考</h2>
+<div class="outline-text-2" id="text-org447cc50">
+<ul class="org-ul">
+<li><a href="https://docs.docker.com/registry/deploying/">https://docs.docker.com/registry/deploying/</a></li>
+<li><a href="https://tonybai.com/2016/02/26/deploy-a-private-docker-registry/">部署私有Docker Registry</a></li>
+</ul>
+</div>
+</div>
+]]></content>
+      <categories>
+        <category>howto</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安装 blog-admin 博客插件</title>
+    <url>/2016/05/28/install-blog-admin/</url>
+    <content><![CDATA[
+
+
+
+<div id="outline-container-orga0431de" class="outline-2">
+<h2 id="orga0431de">安装 hexo</h2>
+<div class="outline-text-2" id="text-orga0431de">
+</div>
+<div id="outline-container-orgc4aa776" class="outline-3">
+<h3 id="orgc4aa776">安装</h3>
+<div class="outline-text-3" id="text-orgc4aa776">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">brew install node&#10;npm install hexo-cli --no-optional -g&#10;hexo init blog &#38;&#38; cd blog&#10;git clone https://github.com/iissnan/hexo-theme-next.git theme/next&#10;npm install https://github.com/CodeFalling/hexo-renderer-org\#emacs --save&#10;npm install hexo-deployer-git --save&#10;npm install hexo-renderer-org --save&#10;# &#22312;org-mode&#19979;&#25554;&#20837;&#22270;&#29255;[[./article-title/image.png]],&#10;# &#29983;&#25104;&#21518;&#22270;&#29255;&#36335;&#24452;&#38656;&#35201;&#26367;&#25442;&#10;# &#26367;&#25442;node_modules/hexo-renderer-org/lib/renderer.js&#30340;parse_output&#20989;&#25968;&#10;# &#22312;out = whole[1]&#19979;&#38754;&#28155;&#21152;&#26367;&#25442;&#35821;&#21477;&#10;#   out = out.replace(/img src=&#34;.\//g, &#39;img src=&#34;../&#39;)</span><br></pre></td></tr></table></figure>
+</div>
+
+<span id="more"></span>
+</div>
+</div>
+
+<div id="outline-container-org6bef938" class="outline-3">
+<h3 id="org6bef938">配置</h3>
+<div class="outline-text-3" id="text-org6bef938">
+<ul class="org-ul">
+<li><p>
+配置 next 主题
+</p>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">grep theme  _config.yml&#10;  ## Themes: https://hexo.io/themes/&#10;  #theme: landscape&#10;  theme: next</span><br></pre></td></tr></table></figure>
+</div></li>
+<li><p>
+配置 hexo-renderer-org，通过 org 写博客
+</p>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">grep -A5 org: _config.yml&#10;org:&#10;emacs: &#39;/Applications/Emacs.app/Contents/MacOS/Emacs&#39;&#10;common: |&#10;    #+OPTIONS: toc:nil&#10;    #+BIND: org-html-postamble \&#34;Last Updated %C.&#60;/br&#62;Render by &#60;a href=&#39;https://github.com/CodeFalling/hexo-renderer-org&#39;&#62;hexo-renderer-org&#60;/a&#62; with %c\&#34;&#10;    cachedir: &#39;./hexo-org-cache/&#39;</span><br></pre></td></tr></table></figure>
+</div></li>
+<li><p>
+配置 swiftype 搜索
+</p>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">grep -A2 Swiftype _config.yml&#10;  # Swiftype Search Key&#10;  swiftype_key: XXXXXXXXXXX</span><br></pre></td></tr></table></figure>
+</div></li>
+<li><p>
+配置 github 发布
+</p>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">grep -A2 deploy: _config.yml&#10;deploy:&#10;  type: git&#10;  repo: https://github.com/keychar/keychar.github.io</span><br></pre></td></tr></table></figure>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orga237fc3" class="outline-3">
+<h3 id="orga237fc3">生成、测试和部署</h3>
+<div class="outline-text-3" id="text-orga237fc3">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">hexo g&#10;hexo s&#10;open http://127.0.0.1:4000&#10;hexo d</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf70a78e" class="outline-2">
+<h2 id="orgf70a78e">在 org 中插入 more 按钮</h2>
+<div class="outline-text-2" id="text-orgf70a78e">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">#+HTML: &#60;!-- more --&#62;</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org9f47078" class="outline-2">
+<h2 id="org9f47078">使用 blog-admin</h2>
+<div class="outline-text-2" id="text-org9f47078">
+</div>
+<div id="outline-container-orgb4ced99" class="outline-3">
+<h3 id="orgb4ced99">如何添加本地搜索</h3>
+<div class="outline-text-3" id="text-orgb4ced99">
+</div>
+<div id="outline-container-orgce3d209" class="outline-4">
+<h4 id="orgce3d209">执行如下命令安装 search 引擎</h4>
+<div class="outline-text-4" id="text-orgce3d209">
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5f71b0e" class="outline-4">
+<h4 id="org5f71b0e">在~/blog/<sub>config.yml</sub> 添加如下配置</h4>
+<div class="outline-text-4" id="text-org5f71b0e">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">search:&#10;  path: search.xml&#10;  field: post</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+<div id="outline-container-org9d4ec4d" class="outline-4">
+<h4 id="org9d4ec4d">参考</h4>
+<div class="outline-text-4" id="text-org9d4ec4d">
+<ul class="org-ul">
+<li><a href="http://theme-next.iissnan.com/third-party-services.html">http://theme-next.iissnan.com/third-party-services.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgd265401" class="outline-3">
+<h3 id="orgd265401">如何使用搜索</h3>
+<div class="outline-text-3" id="text-orgd265401">
+</div>
+<div id="outline-container-org50f57dc" class="outline-4">
+<h4 id="org50f57dc">安装 algolia</h4>
+<div class="outline-text-4" id="text-org50f57dc">
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install hexo-algolia --save</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgde92896" class="outline-4">
+<h4 id="orgde92896">配置<sub>config.yml</sub></h4>
+<div class="outline-text-4" id="text-orgde92896">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">algolia:&#10;  applicationID: &#39;****&#39;&#10;  apiKey: &#39;**********&#39;&#10;  adminApiKey: &#39;**********&#39;&#10;  indexName: &#39;hexo&#39;&#10;  chunkSize: 5000</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7ce60ce" class="outline-4">
+<h4 id="org7ce60ce">生成索引</h4>
+<div class="outline-text-4" id="text-org7ce60ce">
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo algolia</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org10ecadb" class="outline-4">
+<h4 id="org10ecadb">表格示例</h4>
+<div class="outline-text-4" id="text-org10ecadb">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-right">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">学号</th>
+<th scope="col" class="org-left">姓名</th>
+<th scope="col" class="org-left">年级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1234</td>
+<td class="org-left">张晓晓</td>
+<td class="org-left">一年级</td>
+</tr>
+
+<tr>
+<td class="org-right">1235</td>
+<td class="org-left">张要要</td>
+<td class="org-left">二年级</td>
+</tr>
+
+<tr>
+<td class="org-right">1235</td>
+<td class="org-left">张不不</td>
+<td class="org-left">三年级</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org40e8cd0" class="outline-4">
+<h4 id="org40e8cd0">代码示例</h4>
+<div class="outline-text-4" id="text-org40e8cd0">
+<div class="org-src-container">
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * @file main.c</span><br><span class="line"> * @brief Print "Hello world" to screen</span><br><span class="line"> * @author evans</span><br><span class="line"> * @version 1.0</span><br><span class="line"> * @date 05/29/2016 16:31:39, 21th Sunday</span><br><span class="line"> * @par Copyright:</span><br><span class="line"> * Copyright (c) www.keychar.com 2016. All rights reserved.</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>    <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>    <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * @brief The entry of this program</span><br><span class="line"> *</span><br><span class="line"> * @param argc counts of argument</span><br><span class="line"> * @param argv argument variables stored in</span><br><span class="line"> *</span><br><span class="line"> * @return EXIT_SUCCESS</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span><br><span class="line"></span>{</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Hello world\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">}       <span class="comment">//end of function main</span></span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgc108a8d" class="outline-4">
+<h4 id="orgc108a8d">参考</h4>
+<div class="outline-text-4" id="text-orgc108a8d">
+<ul class="org-ul">
+<li><a href="https://www.algolia.com/api-keys">https://www.algolia.com/api-keys</a></li>
+<li><a href="https://www.algolia.com/api-keys">請加入对 Algolia 的支援</a></li>
+<li><a href="https://github.com/hexojs/site/commit/a3961d9cd3958141cebf8f02c13c9849fe7cf421">https://github.com/hexojs/site/commit/a3961d9cd3958141cebf8f02c13c9849fe7cf421</a></li>
+<li><a href="https://www.npmjs.com/package/hexo-algolia">https://www.npmjs.com/package/hexo-algolia</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org96cda9b" class="outline-3">
+<h3 id="org96cda9b">如何添加标签和分页</h3>
+<div class="outline-text-3" id="text-org96cda9b">
+</div>
+<div id="outline-container-orgc4e79f1" class="outline-4">
+<h4 id="orgc4e79f1">在 blog 目录执行如下目录</h4>
+<div class="outline-text-4" id="text-orgc4e79f1">
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo new page tags</span><br><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge4ce581" class="outline-4">
+<h4 id="orge4ce581">编辑~/blog/source/tags/index.md, 添加 type: tags</h4>
+<div class="outline-text-4" id="text-orge4ce581">
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">cat <span class="built_in">source</span>/tags/index.md</span><br><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: <span class="number">2016</span>-<span class="number">05</span>-<span class="number">29</span> <span class="number">07</span>:<span class="number">07</span>:<span class="number">13</span></span><br><span class="line"><span class="built_in">type</span>: tags</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org3bbfdc2" class="outline-4">
+<h4 id="org3bbfdc2">编辑~/blog/source/categories/index.md, 添加 type: categories</h4>
+<div class="outline-text-4" id="text-org3bbfdc2">
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">cat ~/blog/<span class="built_in">source</span>/categories/index.md</span><br><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: <span class="number">2016</span>-<span class="number">05</span>-<span class="number">29</span> <span class="number">07</span>:<span class="number">17</span>:<span class="number">43</span></span><br><span class="line"><span class="built_in">type</span>: categories</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgebec3aa" class="outline-3">
+<h3 id="orgebec3aa">如何修改 search 对话框的按钮，改为 X 图标</h3>
+<div class="outline-text-3" id="text-orgebec3aa">
+</div>
+<div id="outline-container-org4bbbd32" class="outline-4">
+<h4 id="org4bbbd32">编辑</h4>
+<div class="outline-text-4" id="text-org4bbbd32">
+<ul class="org-ul">
+<li><p>
+修改'&lt;span class="popup-btn-close"&gt;Close&lt;/span&gt;'为'&lt;span class="popup-btn-close search-icon fa fa-close"&gt;&lt;/span&gt;'
+</p>
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">cat themes/next/layout/_partials/search/localsearch.swig</span><br><span class="line">&lt;div class=<span class="string">"popup"</span>&gt;</span><br><span class="line"> &lt;span class=<span class="string">"search-icon fa fa-search"</span>&gt;&lt;/span&gt;</span><br><span class="line"> &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"local-search-input"</span>&gt;</span><br><span class="line"> &lt;div id=<span class="string">"local-search-result"</span>&gt;&lt;/div&gt;</span><br><span class="line"> &lt;span class=<span class="string">"popup-btn-close search-icon fa fa-close"</span>&gt;&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</div></li>
+
+<li><p>
+修改颜色为红色, color: #FC6423;
+</p>
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">grep -A <span class="number">10</span> <span class="string">'popup-btn-close'</span> ./themes/next/<span class="built_in">source</span>/css/_common/components/third-party/localsearch.styl</span><br><span class="line">.popup-btn-close {</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: <span class="number">6</span>px;</span><br><span class="line">    right: <span class="number">14</span>px;</span><br><span class="line">    color: <span class="comment">#FC6423;</span></span><br><span class="line">    font-size: <span class="number">14</span>px;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">    text-transform: uppercase;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-org9db1d97" class="outline-3">
+<h3 id="org9db1d97">如何添加引用(Hexo NexT)</h3>
+<div class="outline-text-3" id="text-org9db1d97">
+<pre class="example">
+
+#+BEGIN_QUOTE
+Everything should be made as simple as possible,
+but not any simpler -- Albert Einstein
+#+END_QUOTE
+
+</pre>
+
+<blockquote>
+<p>
+Everything should be made as simple as possible,
+but not any simpler &#x2013; Albert Einstein
+</p>
+</blockquote>
+
+
+<pre class="example">
+
+#+BEGIN_HTML
+{% blockquote @DevDocs https://twitter.com/devdocs/status/356095192085962752 %}
+NEW: DevDocs now comes with syntax highlighting. http://devdocs.io
+{% endblockquote %}
+#+END_HTML
+
+</pre>
+
+<div class="HTML" id="orgdcdbe39">
+<p>
+<blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a href="http://devdocs.io">http://devdocs.io</a></p>
+<footer><strong>@DevDocs <a href=https://twitter.com/devdocs/status/356095192085962752>https://twitter.com/devdocs/status/356095192085962752</a></strong></footer></blockquote>
+</p>
+
+</div>
+
+
+<pre class="example">
+
+#+BEGIN_HTML
+{% note %}
+Node stlye note
+{% endnote %}
+#+END_HTML
+
+</pre>
+
+<div class="HTML" id="orgf304cf6">
+<p>
+<div class="note "><p>Node stlye note</p>
+</div>
+</p>
+
+</div>
+
+
+<pre class="example">
+
+#+BEGIN_HTML
+{% note default %}
+Default Node
+{% endnote %}
+#+END_HTML
+
+</pre>
+
+<div class="HTML" id="orgaabb9ec">
+<p>
+<div class="note default"><p>Default Node</p>
+</div>
+</p>
+
+</div>
+
+
+<pre class="example">
+
+#+BEGIN_HTML
+{% note primary %}
+Primary Note
+{% endnote %}
+#+END_HTML
+
+</pre>
+
+<div class="HTML" id="orgcb54991">
+<p>
+<div class="note primary"><p>Primary Note</p>
+</div>
+</p>
+
+</div>
+
+
+<pre class="example">
+
+#+BEGIN_HTML
+{% note info %}
+Info Note
+{% endnote %}
+#+END_HTML
+
+</pre>
+
+<div class="HTML" id="orgc7d67d0">
+<p>
+<div class="note info"><p>Info Note</p>
+</div>
+</p>
+
+</div>
+
+
+<pre class="example">
+
+#+BEGIN_HTML
+{% note success %}
+Sucess Note
+{% endnote %}
+#+END_HTML
+
+</pre>
+
+<div class="HTML" id="org3ef0720">
+<p>
+<div class="note success"><p>Sucess Note</p>
+</div>
+</p>
+
+</div>
+
+
+<pre class="example">
+
+#+BEGIN_HTML
+{% note warning %}
+Warning Note
+{% endnote %}
+#+END_HTML
+
+</pre>
+
+<div class="HTML" id="org61270fc">
+<p>
+<div class="note warning"><p>Warning Note</p>
+</div>
+</p>
+
+</div>
+
+
+<pre class="example">
+
+#+BEGIN_HTML
+{% note danger %}
+Danger Note
+{% endnote %}
+#+END_HTML
+
+</pre>
+
+<div class="HTML" id="org33cd773">
+<p>
+<div class="note danger"><p>Danger Note</p>
+</div>
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgd95dd9e" class="outline-3">
+<h3 id="orgd95dd9e">升级 hexo</h3>
+<div class="outline-text-3" id="text-orgd95dd9e">
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mv themes/next themes/next.bck</span><br><span class="line">git <span class="built_in">clone</span> --branch v8.<span class="number">11.1</span>  https://github.<span class="number">91</span>chi.fun//https://github.com/next-theme/hexo-theme-next themes/next</span><br><span class="line">rm -fr package-lock.json node_module</span><br><span class="line">npm install -g npm-check-updates</span><br><span class="line">ncu <span class="comment"># 查看可更新包</span></span><br><span class="line">ncu -u <span class="comment"># 更新package.json</span></span><br><span class="line">npm install <span class="comment"># 升级到最新版本</span></span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+ncu <i>/ 查看可更新包
+ncu -u /</i> 更新package.json
+npm install // 升级到最新版本
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc684a75" class="outline-2">
+<h2 id="orgc684a75">参考资料</h2>
+<div class="outline-text-2" id="text-orgc684a75">
+<ul class="org-ul">
+<li><a href="https://github.com/CodeFalling/hexo-renderer-org">https://github.com/CodeFalling/hexo-renderer-org</a></li>
+<li><a href="https://github.com/EmuxEvans/blog-admin">https://github.com/EmuxEvans/blog-admin</a></li>
+<li><a href="https://github.com/EmuxEvans/emacs-ctable">https://github.com/EmuxEvans/emacs-ctable</a></li>
+<li><a href="http://theme-next.iissnan.com/third-party-services.html">http://theme-next.iissnan.com/third-party-services.html</a></li>
+<li><a href="http://libs.useso.com">360 前端 CDN 库</a></li>
+<li><a href="https://hexo.io/themes/">Hexo Themes</a></li>
+<li><a href="https://theme-next.org/docs/tag-plugins/">Hexo NexT theme tag plugins</a></li>
+<li><a href="http://eternalzttz.com/hexo-next.html">hexo next主题优化，打造个人精致网站</a></li>
+<li><a href="https://theme-next.iissnan.com">https://theme-next.iissnan.com</a></li>
+<li><a href="https://theme-next.org">https://theme-next.org</a></li>
+<li><a href="https://cyfeng.science/2020/11/20/hexo-use-date-for-updated-warning-solution/">https://cyfeng.science/2020/11/20/hexo-use-date-for-updated-warning-solution/</a></li>
+</ul>
+</div>
+</div>
+]]></content>
+      <categories>
+        <category>write</category>
+      </categories>
+      <tags>
+        <tag>emacs</tag>
+        <tag>blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>tmux安装及快捷键</title>
+    <url>/2019/03/07/tmux-cheatsheet/</url>
+    <content><![CDATA[
+
+
+<div id="outline-container-org0b8b2fa" class="outline-2">
+<h2 id="org0b8b2fa">安装</h2>
+<div class="outline-text-2" id="text-org0b8b2fa">
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/emuxconfig/.tmux</span><br><span class="line">open .tmux/Source\ Code\ Pro\ <span class="keyword">for</span>\ Powerline.otf</span><br><span class="line">ln <span class="operator">-s</span> ~/.tmux/.tmux.conf .</span><br><span class="line">ln <span class="operator">-s</span> ~/.tmux/.tmux.conf.local .</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+安装完字体后，设置 iTerm2 字体为 Source Code Pro for Powerline
+</p>
+
+<span id="more"></span>
+
+
+<div id="orgb7fc671" class="figure">
+<p><img src="../tmux-cheatsheet/tmux.png" alt="tmux.png" title="Tmux Preview" width="800px">
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbfbd1c3" class="outline-2">
+<h2 id="orgbfbd1c3">快捷键</h2>
+<div class="outline-text-2" id="text-orgbfbd1c3">
+</div>
+<div id="outline-container-org80f1d14" class="outline-3">
+<h3 id="org80f1d14">Config</h3>
+<div class="outline-text-3" id="text-org80f1d14">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">快捷键</th>
+<th scope="col" class="org-left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&lt;prefix&gt;</td>
+<td class="org-left">C-b</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; e</td>
+<td class="org-left">打开Vim编辑器编辑.tmux.conf.local</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; r</td>
+<td class="org-left">重载配置</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org2296d6f" class="outline-3">
+<h3 id="org2296d6f">Misc</h3>
+<div class="outline-text-3" id="text-org2296d6f">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">快捷键</th>
+<th scope="col" class="org-left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">x或Esc</td>
+<td class="org-left">退出copy-mode模式</td>
+</tr>
+
+<tr>
+<td class="org-left">C-l</td>
+<td class="org-left">清屏</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; ?</td>
+<td class="org-left">打开帮助信息</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; m</td>
+<td class="org-left">使能或禁止鼠标</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; :</td>
+<td class="org-left">打开命令行</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; i</td>
+<td class="org-left">显示tmux信息</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; ~</td>
+<td class="org-left">显示message</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; t</td>
+<td class="org-left">时钟模式</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orga84777b" class="outline-3">
+<h3 id="orga84777b">Session</h3>
+<div class="outline-text-3" id="text-orga84777b">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">快捷键</th>
+<th scope="col" class="org-left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&lt;prefix&gt; C-c</td>
+<td class="org-left">创建新session</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; $</td>
+<td class="org-left">重命名session</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; (</td>
+<td class="org-left">上一个session</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; )</td>
+<td class="org-left">下一个session</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; s</td>
+<td class="org-left">选择session</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; C-f</td>
+<td class="org-left">使用名称打开其他session</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; d</td>
+<td class="org-left">离开session, 回到命令行用tmux list-session查看SessionNumber，用tmux attach -d -t SessionNumber重新进入session</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; C-z</td>
+<td class="org-left">挂起 session</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org947ba13" class="outline-3">
+<h3 id="org947ba13">Window</h3>
+<div class="outline-text-3" id="text-org947ba13">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">快捷键</th>
+<th scope="col" class="org-left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&lt;prefix&gt; c</td>
+<td class="org-left">创建新window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; ,</td>
+<td class="org-left">重命名window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; f</td>
+<td class="org-left">查找window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; w</td>
+<td class="org-left">选择window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; .</td>
+<td class="org-left">move window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; o</td>
+<td class="org-left">Rotate window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; C-h</td>
+<td class="org-left">打开上一个window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; C-l</td>
+<td class="org-left">打开下一个window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; 1~9</td>
+<td class="org-left">打开第N个window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; '</td>
+<td class="org-left">打开第N个window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; Tab</td>
+<td class="org-left">打开最后一个active的window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; &amp;</td>
+<td class="org-left">关闭当前窗口</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org4c3d605" class="outline-3">
+<h3 id="org4c3d605">Pane</h3>
+<div class="outline-text-3" id="text-org4c3d605">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">快捷键</th>
+<th scope="col" class="org-left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&lt;prefix&gt; -或"</td>
+<td class="org-left">水平分隔</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; _或%</td>
+<td class="org-left">垂直分隔</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; x</td>
+<td class="org-left">关闭pane</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; j</td>
+<td class="org-left">转移到下边</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; k</td>
+<td class="org-left">转移到上边</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; h</td>
+<td class="org-left">转移到左边</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; l</td>
+<td class="org-left">转移到右边</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; J</td>
+<td class="org-left">下边伸长</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; K</td>
+<td class="org-left">上边伸长</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; H</td>
+<td class="org-left">左边伸长</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; L</td>
+<td class="org-left">右边伸长</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; +</td>
+<td class="org-left">最大化和复原(会创建新window，旧window变为dead)</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; z</td>
+<td class="org-left">最大化和复原</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; q</td>
+<td class="org-left">显示pane</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; ;</td>
+<td class="org-left">打开最后一个pane</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; o</td>
+<td class="org-left">循环切换pane</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; &lt;或{</td>
+<td class="org-left">交换pane</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; &gt;或}</td>
+<td class="org-left">交换pane</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; !</td>
+<td class="org-left">单独把pane放到新窗口</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; Space</td>
+<td class="org-left">切换窗口布局</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org31a0587" class="outline-3">
+<h3 id="org31a0587">Copy</h3>
+<div class="outline-text-3" id="text-org31a0587">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">快捷键</th>
+<th scope="col" class="org-left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&lt;prefix&gt; Enter</td>
+<td class="org-left">进入复制模式</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; Esc</td>
+<td class="org-left">进入复制模式</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; [</td>
+<td class="org-left">进入复制模式</td>
+</tr>
+
+<tr>
+<td class="org-left">y</td>
+<td class="org-left">复制</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; ]</td>
+<td class="org-left">粘贴最后一个复制</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; p</td>
+<td class="org-left">粘贴最后一个复制</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; P</td>
+<td class="org-left">选择粘贴, j/k上下选择，d删除</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; b或#</td>
+<td class="org-left">列出buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; =</td>
+<td class="org-left">选择-Z buffer</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0f0a6d7" class="outline-2">
+<h2 id="org0f0a6d7">参考</h2>
+<div class="outline-text-2" id="text-org0f0a6d7">
+<ul class="org-ul">
+<li><a href="https://leanpub.com/the-tao-of-tmux/read">The Tao of tmux</a></li>
+<li><a href="http://louiszhai.github.io/2017/09/30/tmux/">Tmux使用手册</a></li>
+<li><a href="https://github.com/chubin/wttr.in">Tmux天气</a></li>
+<li><a href="https://powerline.readthedocs.io/en/latest/installation/linux.html#fonts-installation">Linux安装Powerline字体</a></li>
+</ul>
+</div>
+</div>
+]]></content>
+      <categories>
+        <category>programming</category>
+      </categories>
+      <tags>
+        <tag>tmux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>深入理解浮点数存储</title>
+    <url>/2016/07/05/undersdanding-float-storage/</url>
+    <content><![CDATA[
+
+
+<div id="outline-container-org7a2e5c6" class="outline-2">
+<h2 id="org7a2e5c6">引言</h2>
+<div class="outline-text-2" id="text-org7a2e5c6">
+<p>
+在 c 程序开发时，经常会碰到数据转换的情况。
+本文表述了对于浮点数如何存储的理解。
+</p>
+
+<span id="more"></span>
+</div>
+</div>
+
+<div id="outline-container-orgead3cdf" class="outline-2">
+<h2 id="orgead3cdf">浮点数在内存存储示例</h2>
+<div class="outline-text-2" id="text-orgead3cdf">
+<div class="org-src-container">
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>     <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>     <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * @brief The entry of this program</span><br><span class="line"> *</span><br><span class="line"> * @param argc counts of argument</span><br><span class="line"> * @param argv argument variables stored in</span><br><span class="line"> *</span><br><span class="line"> * @return EXIT_SUCCESS</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span><br><span class="line"></span>{</span><br><span class="line">    <span class="keyword">float</span> f = <span class="number">7.5</span>;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> i = *(<span class="keyword">unsigned</span> <span class="keyword">int</span> *)&amp;f;</span><br><span class="line">    <span class="built_in">printf</span> (<span class="string">"i:0x%x\n"</span>, i);</span><br><span class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">}          <span class="comment">//end of function main</span></span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org32a172c" class="outline-2">
+<h2 id="org32a172c">输出结果</h2>
+<div class="outline-text-2" id="text-org32a172c">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">i:0x40F00000</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org13e60a1" class="outline-2">
+<h2 id="org13e60a1">解释</h2>
+<div class="outline-text-2" id="text-org13e60a1">
+</div>
+<div id="outline-container-orgd0948df" class="outline-3">
+<h3 id="orgd0948df">浮点数格式</h3>
+<div class="outline-text-3" id="text-orgd0948df">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">|                                                               |&#10;|&#60;------------------------4Bytes/32Bits------------------------&#62;|&#10;|                                                               |&#10;|1Bit(Sign:+/-)    23Bits(Digit)                                |&#10;+-+---------------+---------------------------------------------+&#10;|x|x x x x x x x x|x x x x x x x x x x x x x x x x x x x x x x x|&#10;+-+---------------++-+-+----------------------------------------+&#10;   8Bits(Exp)      | | +-(2^-3)&#10;                   | +-(2^-2)&#10;                   +-(2^-1)</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga25de74" class="outline-3">
+<h3 id="orga25de74">浮点数7.5如何存储</h3>
+<div class="outline-text-3" id="text-orga25de74">
+<p>
++7.5 = 3.75 * (2<sup>1</sup>) = 1.875 * (2<sup>2</sup>) <br>
+Sign = 0 <br>
+Exp - 127 = 2 <br>
+Exp = 129 = 1000 0001(Binary) <br>
+0.875 = 0.5 + 0.25 + 0.125 <br>
+      = (2<sup>-1</sup>) + (2<sup>-2</sup>) + (2<sup>-3</sup>) <br>
+Digit = 111 0000 0000 0000 0000 0000(Binray) <br>
+</p>
+
+<p>
+将上述计算结果代如浮点数格式后，i即为0x40F00000
+</p>
+
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"> 1Bit(+/-)         23Bits(Digit)&#10;+-+---------------+---------------------------------------------+&#10;|0|1 0 0 0 0 0 0 1|1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0|&#10;+-+---------------+---------------------------------------------+&#10;   8Bits(Exp)&#10;&#10;+---------------+---------------+---------------+---------------+&#10;|0 1 0 0 0 0 0 0|1 1 1 1 0 0 0 0|0 0 0 0 0 0 0 0|0 0 0 0 0 0 0 0|&#10;+---------------+---------------+---------------+---------------+&#10; 0x40              0xF0            0x00            0x00</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+</div>
+]]></content>
+      <categories>
+        <category>programming</category>
+      </categories>
+      <tags>
+        <tag>c</tag>
+        <tag>float</tag>
+      </tags>
+  </entry>
+</search>

@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.keychar.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="安装   1234git clone https:&#x2F;&#x2F;github.com&#x2F;emuxconfig&#x2F;.tmuxopen .tmux&#x2F;Source\ Code\ Pro\ for\ Powerline.otfln -s ~&#x2F;.tmux&#x2F;.tmux.conf .ln -s ~&#x2F;.tmux&#x2F;.tmux.conf.local .   安装完字体后，设置 iTerm2 字体为 Source Code Pro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tmux安装及快捷键">
+<meta property="og:url" content="http://www.keychar.com/2019/03/07/tmux-cheatsheet/index.html">
+<meta property="og:site_name" content="keychar">
+<meta property="og:description" content="安装   1234git clone https:&#x2F;&#x2F;github.com&#x2F;emuxconfig&#x2F;.tmuxopen .tmux&#x2F;Source\ Code\ Pro\ for\ Powerline.otfln -s ~&#x2F;.tmux&#x2F;.tmux.conf .ln -s ~&#x2F;.tmux&#x2F;.tmux.conf.local .   安装完字体后，设置 iTerm2 字体为 Source Code Pro">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.keychar.com/2019/03/07/tmux-cheatsheet/tmux.png">
+<meta property="article:published_time" content="2019-03-07T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-07T15:11:04.733Z">
+<meta property="article:author" content="E">
+<meta property="article:tag" content="tmux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.keychar.com/2019/03/07/tmux-cheatsheet/tmux.png">
+
+
+<link rel="canonical" href="http://www.keychar.com/2019/03/07/tmux-cheatsheet/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://www.keychar.com/2019/03/07/tmux-cheatsheet/","path":"2019/03/07/tmux-cheatsheet/","title":"tmux安装及快捷键"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>tmux安装及快捷键 | keychar</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">keychar</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#org0b8b2fa"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgbfbd1c3"><span class="nav-number">2.</span> <span class="nav-text">快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org80f1d14"><span class="nav-number">2.1.</span> <span class="nav-text">Config</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org2296d6f"><span class="nav-number">2.2.</span> <span class="nav-text">Misc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orga84777b"><span class="nav-number">2.3.</span> <span class="nav-text">Session</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org947ba13"><span class="nav-number">2.4.</span> <span class="nav-text">Window</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org4c3d605"><span class="nav-number">2.5.</span> <span class="nav-text">Pane</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org31a0587"><span class="nav-number">2.6.</span> <span class="nav-text">Copy</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org0f0a6d7"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">E</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.keychar.com/2019/03/07/tmux-cheatsheet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="E">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="keychar">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="tmux安装及快捷键 | keychar">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          tmux安装及快捷键
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-03-07 08:00:00" itemprop="dateCreated datePublished" datetime="2019-03-07T08:00:00+08:00">2019-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-01-07 23:11:04" itemprop="dateModified" datetime="2022-01-07T23:11:04+08:00">2022-01-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">programming</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        
+
+
+<div id="outline-container-org0b8b2fa" class="outline-2">
+<h2 id="org0b8b2fa">安装</h2>
+<div class="outline-text-2" id="text-org0b8b2fa">
+<div class="org-src-container">
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/emuxconfig/.tmux</span><br><span class="line">open .tmux/Source\ Code\ Pro\ <span class="keyword">for</span>\ Powerline.otf</span><br><span class="line">ln <span class="operator">-s</span> ~/.tmux/.tmux.conf .</span><br><span class="line">ln <span class="operator">-s</span> ~/.tmux/.tmux.conf.local .</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+安装完字体后，设置 iTerm2 字体为 Source Code Pro for Powerline
+</p>
+
+<span id="more"></span>
+
+
+<div id="orgb7fc671" class="figure">
+<p><img src="../tmux-cheatsheet/tmux.png" alt="tmux.png" title="Tmux Preview" width="800px">
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbfbd1c3" class="outline-2">
+<h2 id="orgbfbd1c3">快捷键</h2>
+<div class="outline-text-2" id="text-orgbfbd1c3">
+</div>
+<div id="outline-container-org80f1d14" class="outline-3">
+<h3 id="org80f1d14">Config</h3>
+<div class="outline-text-3" id="text-org80f1d14">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">快捷键</th>
+<th scope="col" class="org-left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&lt;prefix&gt;</td>
+<td class="org-left">C-b</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; e</td>
+<td class="org-left">打开Vim编辑器编辑.tmux.conf.local</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; r</td>
+<td class="org-left">重载配置</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org2296d6f" class="outline-3">
+<h3 id="org2296d6f">Misc</h3>
+<div class="outline-text-3" id="text-org2296d6f">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">快捷键</th>
+<th scope="col" class="org-left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">x或Esc</td>
+<td class="org-left">退出copy-mode模式</td>
+</tr>
+
+<tr>
+<td class="org-left">C-l</td>
+<td class="org-left">清屏</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; ?</td>
+<td class="org-left">打开帮助信息</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; m</td>
+<td class="org-left">使能或禁止鼠标</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; :</td>
+<td class="org-left">打开命令行</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; i</td>
+<td class="org-left">显示tmux信息</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; ~</td>
+<td class="org-left">显示message</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; t</td>
+<td class="org-left">时钟模式</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orga84777b" class="outline-3">
+<h3 id="orga84777b">Session</h3>
+<div class="outline-text-3" id="text-orga84777b">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">快捷键</th>
+<th scope="col" class="org-left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&lt;prefix&gt; C-c</td>
+<td class="org-left">创建新session</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; $</td>
+<td class="org-left">重命名session</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; (</td>
+<td class="org-left">上一个session</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; )</td>
+<td class="org-left">下一个session</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; s</td>
+<td class="org-left">选择session</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; C-f</td>
+<td class="org-left">使用名称打开其他session</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; d</td>
+<td class="org-left">离开session, 回到命令行用tmux list-session查看SessionNumber，用tmux attach -d -t SessionNumber重新进入session</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; C-z</td>
+<td class="org-left">挂起 session</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org947ba13" class="outline-3">
+<h3 id="org947ba13">Window</h3>
+<div class="outline-text-3" id="text-org947ba13">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">快捷键</th>
+<th scope="col" class="org-left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&lt;prefix&gt; c</td>
+<td class="org-left">创建新window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; ,</td>
+<td class="org-left">重命名window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; f</td>
+<td class="org-left">查找window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; w</td>
+<td class="org-left">选择window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; .</td>
+<td class="org-left">move window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; o</td>
+<td class="org-left">Rotate window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; C-h</td>
+<td class="org-left">打开上一个window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; C-l</td>
+<td class="org-left">打开下一个window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; 1~9</td>
+<td class="org-left">打开第N个window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; '</td>
+<td class="org-left">打开第N个window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; Tab</td>
+<td class="org-left">打开最后一个active的window</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; &amp;</td>
+<td class="org-left">关闭当前窗口</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org4c3d605" class="outline-3">
+<h3 id="org4c3d605">Pane</h3>
+<div class="outline-text-3" id="text-org4c3d605">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">快捷键</th>
+<th scope="col" class="org-left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&lt;prefix&gt; -或"</td>
+<td class="org-left">水平分隔</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; _或%</td>
+<td class="org-left">垂直分隔</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; x</td>
+<td class="org-left">关闭pane</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; j</td>
+<td class="org-left">转移到下边</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; k</td>
+<td class="org-left">转移到上边</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; h</td>
+<td class="org-left">转移到左边</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; l</td>
+<td class="org-left">转移到右边</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; J</td>
+<td class="org-left">下边伸长</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; K</td>
+<td class="org-left">上边伸长</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; H</td>
+<td class="org-left">左边伸长</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; L</td>
+<td class="org-left">右边伸长</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; +</td>
+<td class="org-left">最大化和复原(会创建新window，旧window变为dead)</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; z</td>
+<td class="org-left">最大化和复原</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; q</td>
+<td class="org-left">显示pane</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; ;</td>
+<td class="org-left">打开最后一个pane</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; o</td>
+<td class="org-left">循环切换pane</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; &lt;或{</td>
+<td class="org-left">交换pane</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; &gt;或}</td>
+<td class="org-left">交换pane</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; !</td>
+<td class="org-left">单独把pane放到新窗口</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; Space</td>
+<td class="org-left">切换窗口布局</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org31a0587" class="outline-3">
+<h3 id="org31a0587">Copy</h3>
+<div class="outline-text-3" id="text-org31a0587">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">快捷键</th>
+<th scope="col" class="org-left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&lt;prefix&gt; Enter</td>
+<td class="org-left">进入复制模式</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; Esc</td>
+<td class="org-left">进入复制模式</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; [</td>
+<td class="org-left">进入复制模式</td>
+</tr>
+
+<tr>
+<td class="org-left">y</td>
+<td class="org-left">复制</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; ]</td>
+<td class="org-left">粘贴最后一个复制</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; p</td>
+<td class="org-left">粘贴最后一个复制</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; P</td>
+<td class="org-left">选择粘贴, j/k上下选择，d删除</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; b或#</td>
+<td class="org-left">列出buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;prefix&gt; =</td>
+<td class="org-left">选择-Z buffer</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0f0a6d7" class="outline-2">
+<h2 id="org0f0a6d7">参考</h2>
+<div class="outline-text-2" id="text-org0f0a6d7">
+<ul class="org-ul">
+<li><a target="_blank" rel="noopener" href="https://leanpub.com/the-tao-of-tmux/read">The Tao of tmux</a></li>
+<li><a target="_blank" rel="noopener" href="http://louiszhai.github.io/2017/09/30/tmux/">Tmux使用手册</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chubin/wttr.in">Tmux天气</a></li>
+<li><a target="_blank" rel="noopener" href="https://powerline.readthedocs.io/en/latest/installation/linux.html#fonts-installation">Linux安装Powerline字体</a></li>
+</ul>
+</div>
+</div>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/tmux/" rel="tag"># tmux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/03/06/create-private-docker-registry/" rel="prev" title="如何创建私有Docker Registry">
+                  <i class="fa fa-chevron-left"></i> 如何创建私有Docker Registry
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/10/20/access-terminal-on-web/" rel="next" title="在 Web 界面访问命令行">
+                  在 Web 界面访问命令行 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">E</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
