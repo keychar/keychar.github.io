@@ -733,6 +733,88 @@ npm install // 升级到最新版本
       </tags>
   </entry>
   <entry>
+    <title>深入理解浮点数存储</title>
+    <url>/2016/07/05/undersdanding-float-storage/</url>
+    <content><![CDATA[
+
+
+<div id="outline-container-org7a2e5c6" class="outline-2">
+<h2 id="org7a2e5c6">引言</h2>
+<div class="outline-text-2" id="text-org7a2e5c6">
+<p>
+在 c 程序开发时，经常会碰到数据转换的情况。
+本文表述了对于浮点数如何存储的理解。
+</p>
+
+<span id="more"></span>
+</div>
+</div>
+
+<div id="outline-container-orgead3cdf" class="outline-2">
+<h2 id="orgead3cdf">浮点数在内存存储示例</h2>
+<div class="outline-text-2" id="text-orgead3cdf">
+<div class="org-src-container">
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>     <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>     <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * @brief The entry of this program</span><br><span class="line"> *</span><br><span class="line"> * @param argc counts of argument</span><br><span class="line"> * @param argv argument variables stored in</span><br><span class="line"> *</span><br><span class="line"> * @return EXIT_SUCCESS</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span><br><span class="line"></span>{</span><br><span class="line">    <span class="keyword">float</span> f = <span class="number">7.5</span>;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> i = *(<span class="keyword">unsigned</span> <span class="keyword">int</span> *)&amp;f;</span><br><span class="line">    <span class="built_in">printf</span> (<span class="string">"i:0x%x\n"</span>, i);</span><br><span class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">}          <span class="comment">//end of function main</span></span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org32a172c" class="outline-2">
+<h2 id="org32a172c">输出结果</h2>
+<div class="outline-text-2" id="text-org32a172c">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">i:0x40F00000</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org13e60a1" class="outline-2">
+<h2 id="org13e60a1">解释</h2>
+<div class="outline-text-2" id="text-org13e60a1">
+</div>
+<div id="outline-container-orgd0948df" class="outline-3">
+<h3 id="orgd0948df">浮点数格式</h3>
+<div class="outline-text-3" id="text-orgd0948df">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">|                                                               |&#10;|&#60;------------------------4Bytes/32Bits------------------------&#62;|&#10;|                                                               |&#10;|1Bit(Sign:+/-)    23Bits(Digit)                                |&#10;+-+---------------+---------------------------------------------+&#10;|x|x x x x x x x x|x x x x x x x x x x x x x x x x x x x x x x x|&#10;+-+---------------++-+-+----------------------------------------+&#10;   8Bits(Exp)      | | +-(2^-3)&#10;                   | +-(2^-2)&#10;                   +-(2^-1)</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga25de74" class="outline-3">
+<h3 id="orga25de74">浮点数7.5如何存储</h3>
+<div class="outline-text-3" id="text-orga25de74">
+<p>
++7.5 = 3.75 * (2<sup>1</sup>) = 1.875 * (2<sup>2</sup>) <br>
+Sign = 0 <br>
+Exp - 127 = 2 <br>
+Exp = 129 = 1000 0001(Binary) <br>
+0.875 = 0.5 + 0.25 + 0.125 <br>
+      = (2<sup>-1</sup>) + (2<sup>-2</sup>) + (2<sup>-3</sup>) <br>
+Digit = 111 0000 0000 0000 0000 0000(Binray) <br>
+</p>
+
+<p>
+将上述计算结果代如浮点数格式后，i即为0x40F00000
+</p>
+
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"> 1Bit(+/-)         23Bits(Digit)&#10;+-+---------------+---------------------------------------------+&#10;|0|1 0 0 0 0 0 0 1|1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0|&#10;+-+---------------+---------------------------------------------+&#10;   8Bits(Exp)&#10;&#10;+---------------+---------------+---------------+---------------+&#10;|0 1 0 0 0 0 0 0|1 1 1 1 0 0 0 0|0 0 0 0 0 0 0 0|0 0 0 0 0 0 0 0|&#10;+---------------+---------------+---------------+---------------+&#10; 0x40              0xF0            0x00            0x00</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+</div>
+]]></content>
+      <categories>
+        <category>programming</category>
+      </categories>
+      <tags>
+        <tag>c</tag>
+        <tag>float</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>tmux安装及快捷键</title>
     <url>/2019/03/07/tmux-cheatsheet/</url>
     <content><![CDATA[
@@ -1232,88 +1314,6 @@ npm install // 升级到最新版本
       </categories>
       <tags>
         <tag>tmux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>深入理解浮点数存储</title>
-    <url>/2016/07/05/undersdanding-float-storage/</url>
-    <content><![CDATA[
-
-
-<div id="outline-container-org7a2e5c6" class="outline-2">
-<h2 id="org7a2e5c6">引言</h2>
-<div class="outline-text-2" id="text-org7a2e5c6">
-<p>
-在 c 程序开发时，经常会碰到数据转换的情况。
-本文表述了对于浮点数如何存储的理解。
-</p>
-
-<span id="more"></span>
-</div>
-</div>
-
-<div id="outline-container-orgead3cdf" class="outline-2">
-<h2 id="orgead3cdf">浮点数在内存存储示例</h2>
-<div class="outline-text-2" id="text-orgead3cdf">
-<div class="org-src-container">
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>     <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>     <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * @brief The entry of this program</span><br><span class="line"> *</span><br><span class="line"> * @param argc counts of argument</span><br><span class="line"> * @param argv argument variables stored in</span><br><span class="line"> *</span><br><span class="line"> * @return EXIT_SUCCESS</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span><br><span class="line"></span>{</span><br><span class="line">    <span class="keyword">float</span> f = <span class="number">7.5</span>;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> i = *(<span class="keyword">unsigned</span> <span class="keyword">int</span> *)&amp;f;</span><br><span class="line">    <span class="built_in">printf</span> (<span class="string">"i:0x%x\n"</span>, i);</span><br><span class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">}          <span class="comment">//end of function main</span></span><br></pre></td></tr></table></figure>
-</div>
-</div>
-</div>
-
-
-<div id="outline-container-org32a172c" class="outline-2">
-<h2 id="org32a172c">输出结果</h2>
-<div class="outline-text-2" id="text-org32a172c">
-<div class="org-src-container">
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">i:0x40F00000</span><br></pre></td></tr></table></figure>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org13e60a1" class="outline-2">
-<h2 id="org13e60a1">解释</h2>
-<div class="outline-text-2" id="text-org13e60a1">
-</div>
-<div id="outline-container-orgd0948df" class="outline-3">
-<h3 id="orgd0948df">浮点数格式</h3>
-<div class="outline-text-3" id="text-orgd0948df">
-<div class="org-src-container">
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">|                                                               |&#10;|&#60;------------------------4Bytes/32Bits------------------------&#62;|&#10;|                                                               |&#10;|1Bit(Sign:+/-)    23Bits(Digit)                                |&#10;+-+---------------+---------------------------------------------+&#10;|x|x x x x x x x x|x x x x x x x x x x x x x x x x x x x x x x x|&#10;+-+---------------++-+-+----------------------------------------+&#10;   8Bits(Exp)      | | +-(2^-3)&#10;                   | +-(2^-2)&#10;                   +-(2^-1)</span><br></pre></td></tr></table></figure>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orga25de74" class="outline-3">
-<h3 id="orga25de74">浮点数7.5如何存储</h3>
-<div class="outline-text-3" id="text-orga25de74">
-<p>
-+7.5 = 3.75 * (2<sup>1</sup>) = 1.875 * (2<sup>2</sup>) <br>
-Sign = 0 <br>
-Exp - 127 = 2 <br>
-Exp = 129 = 1000 0001(Binary) <br>
-0.875 = 0.5 + 0.25 + 0.125 <br>
-      = (2<sup>-1</sup>) + (2<sup>-2</sup>) + (2<sup>-3</sup>) <br>
-Digit = 111 0000 0000 0000 0000 0000(Binray) <br>
-</p>
-
-<p>
-将上述计算结果代如浮点数格式后，i即为0x40F00000
-</p>
-
-<div class="org-src-container">
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"> 1Bit(+/-)         23Bits(Digit)&#10;+-+---------------+---------------------------------------------+&#10;|0|1 0 0 0 0 0 0 1|1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0|&#10;+-+---------------+---------------------------------------------+&#10;   8Bits(Exp)&#10;&#10;+---------------+---------------+---------------+---------------+&#10;|0 1 0 0 0 0 0 0|1 1 1 1 0 0 0 0|0 0 0 0 0 0 0 0|0 0 0 0 0 0 0 0|&#10;+---------------+---------------+---------------+---------------+&#10; 0x40              0xF0            0x00            0x00</span><br></pre></td></tr></table></figure>
-</div>
-</div>
-</div>
-</div>
-]]></content>
-      <categories>
-        <category>programming</category>
-      </categories>
-      <tags>
-        <tag>c</tag>
-        <tag>float</tag>
       </tags>
   </entry>
 </search>
