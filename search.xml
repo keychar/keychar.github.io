@@ -253,13 +253,13 @@ Shellinabox 是一个基于 web 的终端模拟器，通过它在 Web 浏览器�
 
 
 
-<div id="outline-container-orga0431de" class="outline-2">
-<h2 id="orga0431de">安装 hexo</h2>
-<div class="outline-text-2" id="text-orga0431de">
+<div id="outline-container-org89e2645" class="outline-2">
+<h2 id="org89e2645">安装 hexo</h2>
+<div class="outline-text-2" id="text-org89e2645">
 </div>
-<div id="outline-container-orgc4aa776" class="outline-3">
-<h3 id="orgc4aa776">安装</h3>
-<div class="outline-text-3" id="text-orgc4aa776">
+<div id="outline-container-org701edf6" class="outline-3">
+<h3 id="org701edf6">安装</h3>
+<div class="outline-text-3" id="text-org701edf6">
 <div class="org-src-container">
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">brew install node&#10;npm install hexo-cli --no-optional -g&#10;hexo init blog &#38;&#38; cd blog&#10;git clone https://github.com/iissnan/hexo-theme-next.git theme/next&#10;npm install https://github.com/CodeFalling/hexo-renderer-org\#emacs --save&#10;npm install hexo-deployer-git --save&#10;npm install hexo-renderer-org --save&#10;# &#22312;org-mode&#19979;&#25554;&#20837;&#22270;&#29255;[[./article-title/image.png]],&#10;# &#29983;&#25104;&#21518;&#22270;&#29255;&#36335;&#24452;&#38656;&#35201;&#26367;&#25442;&#10;# &#26367;&#25442;node_modules/hexo-renderer-org/lib/renderer.js&#30340;parse_output&#20989;&#25968;&#10;# &#22312;out = whole[1]&#19979;&#38754;&#28155;&#21152;&#26367;&#25442;&#35821;&#21477;&#10;#   out = out.replace(/img src=&#34;.\//g, &#39;img src=&#34;../&#39;)</span><br></pre></td></tr></table></figure>
 </div>
@@ -268,9 +268,9 @@ Shellinabox 是一个基于 web 的终端模拟器，通过它在 Web 浏览器�
 </div>
 </div>
 
-<div id="outline-container-org6bef938" class="outline-3">
-<h3 id="org6bef938">配置</h3>
-<div class="outline-text-3" id="text-org6bef938">
+<div id="outline-container-org8c5de3b" class="outline-3">
+<h3 id="org8c5de3b">配置</h3>
+<div class="outline-text-3" id="text-org8c5de3b">
 <ul class="org-ul">
 <li><p>
 配置 next 主题
@@ -301,9 +301,9 @@ Shellinabox 是一个基于 web 的终端模拟器，通过它在 Web 浏览器�
 </div>
 
 
-<div id="outline-container-orga237fc3" class="outline-3">
-<h3 id="orga237fc3">生成、测试和部署</h3>
-<div class="outline-text-3" id="text-orga237fc3">
+<div id="outline-container-org55040e6" class="outline-3">
+<h3 id="org55040e6">生成、测试和部署</h3>
+<div class="outline-text-3" id="text-org55040e6">
 <div class="org-src-container">
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">hexo g&#10;hexo s&#10;open http://127.0.0.1:4000&#10;hexo d</span><br></pre></td></tr></table></figure>
 </div>
@@ -312,9 +312,9 @@ Shellinabox 是一个基于 web 的终端模拟器，通过它在 Web 浏览器�
 </div>
 
 
-<div id="outline-container-orgf70a78e" class="outline-2">
-<h2 id="orgf70a78e">在 org 中插入 more 按钮</h2>
-<div class="outline-text-2" id="text-orgf70a78e">
+<div id="outline-container-org8d05f7b" class="outline-2">
+<h2 id="org8d05f7b">在 org 中插入 more 按钮</h2>
+<div class="outline-text-2" id="text-org8d05f7b">
 <div class="org-src-container">
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">#+HTML: &#60;!-- more --&#62;</span><br></pre></td></tr></table></figure>
 </div>
@@ -322,34 +322,34 @@ Shellinabox 是一个基于 web 的终端模拟器，通过它在 Web 浏览器�
 </div>
 
 
-<div id="outline-container-org9f47078" class="outline-2">
-<h2 id="org9f47078">使用 blog-admin</h2>
-<div class="outline-text-2" id="text-org9f47078">
+<div id="outline-container-org554896a" class="outline-2">
+<h2 id="org554896a">使用 blog-admin</h2>
+<div class="outline-text-2" id="text-org554896a">
 </div>
-<div id="outline-container-orgb4ced99" class="outline-3">
-<h3 id="orgb4ced99">如何添加本地搜索</h3>
-<div class="outline-text-3" id="text-orgb4ced99">
+<div id="outline-container-orgce91776" class="outline-3">
+<h3 id="orgce91776">如何添加本地搜索</h3>
+<div class="outline-text-3" id="text-orgce91776">
 </div>
-<div id="outline-container-orgce3d209" class="outline-4">
-<h4 id="orgce3d209">执行如下命令安装 search 引擎</h4>
-<div class="outline-text-4" id="text-orgce3d209">
+<div id="outline-container-orgd679e00" class="outline-4">
+<h4 id="orgd679e00">执行如下命令安装 search 引擎</h4>
+<div class="outline-text-4" id="text-orgd679e00">
 <div class="org-src-container">
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5f71b0e" class="outline-4">
-<h4 id="org5f71b0e">在~/blog/<sub>config.yml</sub> 添加如下配置</h4>
-<div class="outline-text-4" id="text-org5f71b0e">
+<div id="outline-container-orgd6c4e84" class="outline-4">
+<h4 id="orgd6c4e84">在~/blog/<sub>config.yml</sub> 添加如下配置</h4>
+<div class="outline-text-4" id="text-orgd6c4e84">
 <div class="org-src-container">
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">search:&#10;  path: search.xml&#10;  field: post</span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
-<div id="outline-container-org9d4ec4d" class="outline-4">
-<h4 id="org9d4ec4d">参考</h4>
-<div class="outline-text-4" id="text-org9d4ec4d">
+<div id="outline-container-orge7dc325" class="outline-4">
+<h4 id="orge7dc325">参考</h4>
+<div class="outline-text-4" id="text-orge7dc325">
 <ul class="org-ul">
 <li><a href="http://theme-next.iissnan.com/third-party-services.html">http://theme-next.iissnan.com/third-party-services.html</a></li>
 </ul>
@@ -358,40 +358,40 @@ Shellinabox 是一个基于 web 的终端模拟器，通过它在 Web 浏览器�
 </div>
 
 
-<div id="outline-container-orgd265401" class="outline-3">
-<h3 id="orgd265401">如何使用搜索</h3>
-<div class="outline-text-3" id="text-orgd265401">
+<div id="outline-container-orgd8d12c8" class="outline-3">
+<h3 id="orgd8d12c8">如何使用搜索</h3>
+<div class="outline-text-3" id="text-orgd8d12c8">
 </div>
-<div id="outline-container-org50f57dc" class="outline-4">
-<h4 id="org50f57dc">安装 algolia</h4>
-<div class="outline-text-4" id="text-org50f57dc">
+<div id="outline-container-org9d6a66a" class="outline-4">
+<h4 id="org9d6a66a">安装 algolia</h4>
+<div class="outline-text-4" id="text-org9d6a66a">
 <div class="org-src-container">
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install hexo-algolia --save</span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgde92896" class="outline-4">
-<h4 id="orgde92896">配置<sub>config.yml</sub></h4>
-<div class="outline-text-4" id="text-orgde92896">
+<div id="outline-container-org3ad5dd2" class="outline-4">
+<h4 id="org3ad5dd2">配置<sub>config.yml</sub></h4>
+<div class="outline-text-4" id="text-org3ad5dd2">
 <div class="org-src-container">
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">algolia:&#10;  applicationID: &#39;****&#39;&#10;  apiKey: &#39;**********&#39;&#10;  adminApiKey: &#39;**********&#39;&#10;  indexName: &#39;hexo&#39;&#10;  chunkSize: 5000</span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7ce60ce" class="outline-4">
-<h4 id="org7ce60ce">生成索引</h4>
-<div class="outline-text-4" id="text-org7ce60ce">
+<div id="outline-container-org35f18ad" class="outline-4">
+<h4 id="org35f18ad">生成索引</h4>
+<div class="outline-text-4" id="text-org35f18ad">
 <div class="org-src-container">
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo algolia</span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org10ecadb" class="outline-4">
-<h4 id="org10ecadb">表格示例</h4>
-<div class="outline-text-4" id="text-org10ecadb">
+<div id="outline-container-orgaf600b3" class="outline-4">
+<h4 id="orgaf600b3">表格示例</h4>
+<div class="outline-text-4" id="text-orgaf600b3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -433,9 +433,9 @@ Shellinabox 是一个基于 web 的终端模拟器，通过它在 Web 浏览器�
 </div>
 
 
-<div id="outline-container-org40e8cd0" class="outline-4">
-<h4 id="org40e8cd0">代码示例</h4>
-<div class="outline-text-4" id="text-org40e8cd0">
+<div id="outline-container-org56e59d6" class="outline-4">
+<h4 id="org56e59d6">代码示例</h4>
+<div class="outline-text-4" id="text-org56e59d6">
 <div class="org-src-container">
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * @file main.c</span><br><span class="line"> * @brief Print "Hello world" to screen</span><br><span class="line"> * @author evans</span><br><span class="line"> * @version 1.0</span><br><span class="line"> * @date 05/29/2016 16:31:39, 21th Sunday</span><br><span class="line"> * @par Copyright:</span><br><span class="line"> * Copyright (c) www.keychar.com 2016. All rights reserved.</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>    <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>    <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * @brief The entry of this program</span><br><span class="line"> *</span><br><span class="line"> * @param argc counts of argument</span><br><span class="line"> * @param argv argument variables stored in</span><br><span class="line"> *</span><br><span class="line"> * @return EXIT_SUCCESS</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span><br><span class="line"></span>{</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Hello world\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">}       <span class="comment">//end of function main</span></span><br></pre></td></tr></table></figure>
 </div>
@@ -443,9 +443,9 @@ Shellinabox 是一个基于 web 的终端模拟器，通过它在 Web 浏览器�
 </div>
 
 
-<div id="outline-container-orgc108a8d" class="outline-4">
-<h4 id="orgc108a8d">参考</h4>
-<div class="outline-text-4" id="text-orgc108a8d">
+<div id="outline-container-orgdb538c9" class="outline-4">
+<h4 id="orgdb538c9">参考</h4>
+<div class="outline-text-4" id="text-orgdb538c9">
 <ul class="org-ul">
 <li><a href="https://www.algolia.com/api-keys">https://www.algolia.com/api-keys</a></li>
 <li><a href="https://www.algolia.com/api-keys">請加入对 Algolia 的支援</a></li>
@@ -456,22 +456,22 @@ Shellinabox 是一个基于 web 的终端模拟器，通过它在 Web 浏览器�
 </div>
 </div>
 
-<div id="outline-container-org96cda9b" class="outline-3">
-<h3 id="org96cda9b">如何添加标签和分页</h3>
-<div class="outline-text-3" id="text-org96cda9b">
+<div id="outline-container-org1d2a741" class="outline-3">
+<h3 id="org1d2a741">如何添加标签和分页</h3>
+<div class="outline-text-3" id="text-org1d2a741">
 </div>
-<div id="outline-container-orgc4e79f1" class="outline-4">
-<h4 id="orgc4e79f1">在 blog 目录执行如下目录</h4>
-<div class="outline-text-4" id="text-orgc4e79f1">
+<div id="outline-container-org3afa60f" class="outline-4">
+<h4 id="org3afa60f">在 blog 目录执行如下目录</h4>
+<div class="outline-text-4" id="text-org3afa60f">
 <div class="org-src-container">
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo new page tags</span><br><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orge4ce581" class="outline-4">
-<h4 id="orge4ce581">编辑~/blog/source/tags/index.md, 添加 type: tags</h4>
-<div class="outline-text-4" id="text-orge4ce581">
+<div id="outline-container-orgecc8729" class="outline-4">
+<h4 id="orgecc8729">编辑~/blog/source/tags/index.md, 添加 type: tags</h4>
+<div class="outline-text-4" id="text-orgecc8729">
 <div class="org-src-container">
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">cat <span class="built_in">source</span>/tags/index.md</span><br><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: <span class="number">2016</span>-<span class="number">05</span>-<span class="number">29</span> <span class="number">07</span>:<span class="number">07</span>:<span class="number">13</span></span><br><span class="line"><span class="built_in">type</span>: tags</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 </div>
@@ -479,9 +479,9 @@ Shellinabox 是一个基于 web 的终端模拟器，通过它在 Web 浏览器�
 </div>
 
 
-<div id="outline-container-org3bbfdc2" class="outline-4">
-<h4 id="org3bbfdc2">编辑~/blog/source/categories/index.md, 添加 type: categories</h4>
-<div class="outline-text-4" id="text-org3bbfdc2">
+<div id="outline-container-orgb27e9b1" class="outline-4">
+<h4 id="orgb27e9b1">编辑~/blog/source/categories/index.md, 添加 type: categories</h4>
+<div class="outline-text-4" id="text-orgb27e9b1">
 <div class="org-src-container">
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">cat ~/blog/<span class="built_in">source</span>/categories/index.md</span><br><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: <span class="number">2016</span>-<span class="number">05</span>-<span class="number">29</span> <span class="number">07</span>:<span class="number">17</span>:<span class="number">43</span></span><br><span class="line"><span class="built_in">type</span>: categories</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 </div>
@@ -489,13 +489,13 @@ Shellinabox 是一个基于 web 的终端模拟器，通过它在 Web 浏览器�
 </div>
 </div>
 
-<div id="outline-container-orgebec3aa" class="outline-3">
-<h3 id="orgebec3aa">如何修改 search 对话框的按钮，改为 X 图标</h3>
-<div class="outline-text-3" id="text-orgebec3aa">
+<div id="outline-container-org153750c" class="outline-3">
+<h3 id="org153750c">如何修改 search 对话框的按钮，改为 X 图标</h3>
+<div class="outline-text-3" id="text-org153750c">
 </div>
-<div id="outline-container-org4bbbd32" class="outline-4">
-<h4 id="org4bbbd32">编辑</h4>
-<div class="outline-text-4" id="text-org4bbbd32">
+<div id="outline-container-org9a5ea21" class="outline-4">
+<h4 id="org9a5ea21">编辑</h4>
+<div class="outline-text-4" id="text-org9a5ea21">
 <ul class="org-ul">
 <li><p>
 修改'&lt;span class="popup-btn-close"&gt;Close&lt;/span&gt;'为'&lt;span class="popup-btn-close search-icon fa fa-close"&gt;&lt;/span&gt;'
@@ -518,9 +518,9 @@ Shellinabox 是一个基于 web 的终端模拟器，通过它在 Web 浏览器�
 
 
 
-<div id="outline-container-org9db1d97" class="outline-3">
-<h3 id="org9db1d97">如何添加引用(Hexo NexT)</h3>
-<div class="outline-text-3" id="text-org9db1d97">
+<div id="outline-container-org3dcf39b" class="outline-3">
+<h3 id="org3dcf39b">如何添加引用(Hexo NexT)</h3>
+<div class="outline-text-3" id="text-org3dcf39b">
 <pre class="example">
 
 #+BEGIN_QUOTE
@@ -548,7 +548,7 @@ NEW: DevDocs now comes with syntax highlighting. http://devdocs.io
 
 </pre>
 
-<div class="HTML" id="orgdcdbe39">
+<div class="HTML" id="orgf0fb5de">
 <p>
 <blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a href="http://devdocs.io">http://devdocs.io</a></p>
 <footer><strong>@DevDocs <a href=https://twitter.com/devdocs/status/356095192085962752>https://twitter.com/devdocs/status/356095192085962752</a></strong></footer></blockquote>
@@ -567,7 +567,7 @@ Node stlye note
 
 </pre>
 
-<div class="HTML" id="orgf304cf6">
+<div class="HTML" id="org8b53b4e">
 <p>
 <div class="note "><p>Node stlye note</p>
 </div>
@@ -586,7 +586,7 @@ Default Node
 
 </pre>
 
-<div class="HTML" id="orgaabb9ec">
+<div class="HTML" id="org7b970b1">
 <p>
 <div class="note default"><p>Default Node</p>
 </div>
@@ -605,7 +605,7 @@ Primary Note
 
 </pre>
 
-<div class="HTML" id="orgcb54991">
+<div class="HTML" id="org24de606">
 <p>
 <div class="note primary"><p>Primary Note</p>
 </div>
@@ -624,7 +624,7 @@ Info Note
 
 </pre>
 
-<div class="HTML" id="orgc7d67d0">
+<div class="HTML" id="org6058a97">
 <p>
 <div class="note info"><p>Info Note</p>
 </div>
@@ -643,7 +643,7 @@ Sucess Note
 
 </pre>
 
-<div class="HTML" id="org3ef0720">
+<div class="HTML" id="orgdadbd76">
 <p>
 <div class="note success"><p>Sucess Note</p>
 </div>
@@ -662,7 +662,7 @@ Warning Note
 
 </pre>
 
-<div class="HTML" id="org61270fc">
+<div class="HTML" id="orgebc2dc5">
 <p>
 <div class="note warning"><p>Warning Note</p>
 </div>
@@ -681,7 +681,7 @@ Danger Note
 
 </pre>
 
-<div class="HTML" id="org33cd773">
+<div class="HTML" id="orgcb85f89">
 <p>
 <div class="note danger"><p>Danger Note</p>
 </div>
@@ -690,24 +690,19 @@ Danger Note
 </div>
 </div>
 </div>
-<div id="outline-container-orgd95dd9e" class="outline-3">
-<h3 id="orgd95dd9e">升级 hexo</h3>
-<div class="outline-text-3" id="text-orgd95dd9e">
+<div id="outline-container-org85800b1" class="outline-3">
+<h3 id="org85800b1">升级 hexo</h3>
+<div class="outline-text-3" id="text-org85800b1">
 <div class="org-src-container">
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mv themes/next themes/next.bck</span><br><span class="line">git <span class="built_in">clone</span> --branch v8.<span class="number">11.1</span>  https://github.<span class="number">91</span>chi.fun//https://github.com/next-theme/hexo-theme-next themes/next</span><br><span class="line">rm -fr package-lock.json node_module</span><br><span class="line">npm install -g npm-check-updates</span><br><span class="line">ncu <span class="comment"># 查看可更新包</span></span><br><span class="line">ncu -u <span class="comment"># 更新package.json</span></span><br><span class="line">npm install <span class="comment"># 升级到最新版本</span></span><br></pre></td></tr></table></figure>
 </div>
+</div>
+</div>
+</div>
 
-<p>
-ncu <i>/ 查看可更新包
-ncu -u /</i> 更新package.json
-npm install // 升级到最新版本
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-orgc684a75" class="outline-2">
-<h2 id="orgc684a75">参考资料</h2>
-<div class="outline-text-2" id="text-orgc684a75">
+<div id="outline-container-org7614682" class="outline-2">
+<h2 id="org7614682">参考资料</h2>
+<div class="outline-text-2" id="text-org7614682">
 <ul class="org-ul">
 <li><a href="https://github.com/CodeFalling/hexo-renderer-org">https://github.com/CodeFalling/hexo-renderer-org</a></li>
 <li><a href="https://github.com/EmuxEvans/blog-admin">https://github.com/EmuxEvans/blog-admin</a></li>
